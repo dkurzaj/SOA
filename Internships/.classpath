@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_111">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-all-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-asn1-api-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-asn1-ber-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-i18n-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-ldap-client-api-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-ldap-codec-core-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-ldap-extras-aci-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-ldap-extras-codec-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-ldap-extras-codec-api-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-ldap-model-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-ldap-schema-converter-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-ldap-schema-data-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/api-util-1.0.0-RC2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mina-core-2.0.16.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.apache.servicemix.bundles.antlr-2.7.7_5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.apache.servicemix.bundles.dom4j-1.6.1_5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.apache.servicemix.bundles.xpp3-1.1.4c_7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-log4j12-1.7.21.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xml-apis-2.0.2.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
