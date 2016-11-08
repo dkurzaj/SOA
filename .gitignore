@@ -3,9 +3,6 @@
 # Eclipse folders
 .metadata/
 .recommenders/
-Internships/.classpath
-Internships/.settings/
-Servers/.settings/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
