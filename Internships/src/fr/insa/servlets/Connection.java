@@ -1,6 +1,10 @@
 package fr.insa.servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.directory.api.ldap.model.exception.LdapException;
-import org.apache.directory.ldap.client.api.LdapConnection;
-import org.apache.directory.ldap.client.api.LdapNetworkConnection;
+import com.unboundid.ldap.sdk.LDAPConnection;
+import com.unboundid.ldap.sdk.LDAPException;
+
 
 @WebServlet("/Connection")
 public class Connection extends HttpServlet {
@@ -25,19 +29,28 @@ public class Connection extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter(CHAMP_NOM);
         String pwd = request.getParameter(CHAMP_PASS);
-        System.out.println("nom :" + userName);
-
-        LdapConnection connection = new LdapNetworkConnection("srv-ldap1.insa-toulouse.fr", 389);
+        
         try {
-			connection.bind("uid="+userName+"ou=People,dc=insa-toulouse,dc=fr", pwd);
-			System.out.println("You are now connected to LDAP !");
-		} catch (LdapException e) {
+			String resp = Connection.getHTML("http://etud.insa-toulouse.fr/~kurzaj/?uid=" + userName + "&pwd=" + pwd);
+			System.out.println("resp:" + resp);
+		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Connection to LDAP failed...");
+			System.out.println("Could not connect to the LDAP proxy server !");
 		}
-        finally {
-        	connection.close();
-        }
 	}
+	
+	public static String getHTML(String urlToRead) throws Exception {
+	      StringBuilder result = new StringBuilder();
+	      URL url = new URL(urlToRead);
+	      HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	      conn.setRequestMethod("GET");
+	      BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	      String line;
+	      while ((line = rd.readLine()) != null) {
+	         result.append(line);
+	      }
+	      rd.close();
+	      return result.toString();
+	   }
 
 }
