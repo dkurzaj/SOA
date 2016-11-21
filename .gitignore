@@ -70,3 +70,4 @@ Internships/.classpath
 Servers/.settings/org.eclipse.wst.server.core.prefs
 Servers/Tomcat v8.5 Server at localhost-config/server.xml
 Internships/.classpath
+*.classpath
