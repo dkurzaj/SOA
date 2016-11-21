@@ -66,3 +66,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 Servers/Tomcat v8.5 Server at localhost-config/server.xml
+*.classpath
