@@ -12,28 +12,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/Connection")
-public class Connection extends HttpServlet {
-	public static final String VIEW = "/WEB-INF/connection.jsp";
+@WebServlet("/connexion")
+public class Connexion extends HttpServlet {
+	public static final String VUE = "/WEB-INF/connexion.jsp";
 	private static final String CHAMP_NOM = "nom";
 	private static final String CHAMP_PASS = "motdepasse";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher(VIEW).forward(request, response);
+		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter(CHAMP_NOM);
 		String pwd = request.getParameter(CHAMP_PASS);
-
+		boolean connected = false;
 		try {
-			String resp = Connection.sendPost("http://etud.insa-toulouse.fr/~kurzaj/", "uid=" + userName + "&pwd=" + pwd);
+			String resp = Connexion.sendPost("http://etud.insa-toulouse.fr/~kurzaj/", "uid=" + userName + "&pwd=" + pwd);
 			System.out.println("resp:" + resp);
+			if (resp.equals("true")) {
+				connected = true;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Could not connect to the LDAP proxy server !");
 		}
+		if (connected) {
+			HttpSession session = request.getSession();
+			session.setAttribute("sessionNomUtilisateur", userName);
+		}
+
+		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+		
 	}
 
 	public static String getHTML(String urlToRead) throws Exception {
