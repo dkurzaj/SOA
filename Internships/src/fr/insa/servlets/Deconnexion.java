@@ -19,6 +19,6 @@ public class Deconnexion extends HttpServlet {
         session.invalidate();
 
         /* Affichage de la page de connexion */
-        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        response.sendRedirect(request.getContextPath() + VUE);
     }
 }
