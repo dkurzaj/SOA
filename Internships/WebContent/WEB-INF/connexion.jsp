@@ -9,7 +9,7 @@
     <jsp:body>
 		<c:if test="${!empty sessionScope.sessionNomUtilisateur}">
 			<%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
-			<p class="succes">Bienvenue : ${sessionScope.sessionNomUtilisateur}.</p>
+			<p class="succes">Bienvenue : ${sessionScope.sessionIdentiteUtilisateur}.</p>
 			<form method="get" action="deconnexion" class="form">
 			    <fieldset>
 					<input type="submit" value="Me déconnecter" class="btn btn-primary" />

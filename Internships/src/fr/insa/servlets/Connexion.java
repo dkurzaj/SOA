@@ -42,6 +42,12 @@ public class Connexion extends HttpServlet {
 		if (connected) {
 			HttpSession session = request.getSession();
 			session.setAttribute("sessionNomUtilisateur", userName);
+			try {
+				String identite = Connexion.getHTML("http://etud.insa-toulouse.fr/~kurzaj/identite.php?uid=" + userName);
+				session.setAttribute("sessionIdentiteUtilisateur", identite);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
