@@ -24,12 +24,6 @@
 	
 		<h1 class="page-header"><jsp:invoke fragment="title"/></h1>
 		
-		<div class="jumbotron">
-			<h1>Qui va là ?</h1>
-			<p>Avant de faire quoi que ce soit, il faut se connecter !</p>
-			<p><a class="btn btn-primary btn-large" href="connection">Connexion</a></p>
-		</div>
-		
 		<jsp:doBody/>
 	
 	</div>
