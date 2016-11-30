@@ -9,7 +9,7 @@
     <jsp:body>
     	<div class="row">
     		<div class="col-xs-12">
-    			<h1><span class="details-entreprise">Company</span> <span class="details-offre">A nice internship offer with a long buzzword-filled title</span></h1>
+    			<h1 class="page-header"><span class="details-entreprise">Company</span> <span class="details-offre">A nice internship offer with a long buzzword-filled title</span></h1>
 				<h2><span class="details-lieu">Toulouse</span> <span class="details-duration">6 months</span> <span class="details-start">starting 01 Feb 2016</span></h2>
     		</div>
     		<div class="col-xs-9">
