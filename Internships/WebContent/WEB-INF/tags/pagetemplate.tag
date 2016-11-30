@@ -53,7 +53,7 @@
 					<c:choose>
 						<c:when test="${!empty sessionScope.sessionNomUtilisateur}">
 							<%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
-							<li><a href="deconnexion">${sessionScope.sessionIdentiteUtilisateur} - Disconnect</a></li>
+							<li class="nav-user"><a href="deconnexion">${sessionScope.sessionPhotoUtilisateur} Disconnect</a></li>
 							</c:when>
 							<c:otherwise>
 							<li><a href="connexion">Connect</a></li>
