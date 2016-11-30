@@ -8,11 +8,11 @@
     </jsp:attribute>
     <jsp:body>
     	<div class="row">
-    		<div class="col-sm-12">
+    		<div class="col-xs-12">
     			<h1><span class="details-entreprise">Company</span> <span class="details-offre">A nice internship offer with a long buzzword-filled title</span></h1>
 				<h2><span class="details-lieu">Toulouse</span> <span class="details-duration">6 months</span> <span class="details-start">starting 01 Feb 2016</span></h2>
     		</div>
-    		<div class="col-sm-9">
+    		<div class="col-xs-9">
     			<div class="details-description">
 					<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
 					
@@ -29,7 +29,7 @@
 					</ul>
 				</div>
     		</div>
-    		<div class="col-sm-3">
+    		<div class="col-xs-3">
     			<p><img src="https://fr.mappy.com/front-services/map/31000-toulouse" alt="Carte position du stage" class="details-map"/></p>
     			<p>
     				<a href="/" class="btn btn-primary">Apply</a>
