@@ -7,6 +7,8 @@
     	Page de suivi des candidatures
     </jsp:attribute>
 	<jsp:body>
-	<p> Mdrdr</p>
+	
+	<img src="gerard.jpg" class="img-responsive" alt="error" width="100">
+	
 	</jsp:body>
 </t:pagetemplate>
