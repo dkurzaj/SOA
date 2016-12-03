@@ -9,3 +9,35 @@ img.details-map {
 	margin-right: 5px;
 	vertical-align: text-top;
 }
+
+.navbar-brand {
+	font-family: 'Lobster', cursive;
+	font-size: 2.5em;
+}
+
+#search-tools {
+	padding-top: 40px;
+	padding-bottom: 0px;
+	margin-top: -35px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.table tbody>tr>td.vert-align{
+    vertical-align: middle;
+}
+
+.table img {
+	max-height:100px;
+	max-width:100px;
+}
+
+.table .glyphicon-star {
+	font-size:1.5em;
+}
+.table .glyphicon-star-empty {
+	font-size:1.5em;
+}
+
