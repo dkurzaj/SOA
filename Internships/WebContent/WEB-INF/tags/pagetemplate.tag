@@ -42,14 +42,7 @@
 					<c:choose>
 						<c:when test="${!empty sessionScope.sessionNomUtilisateur}">
 							<%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="mes-infos">Mes infos</a></li>
-									<li role="separator" class="divider"></li>
-									<li class="nav-user"><a href="deconnexion">${sessionScope.sessionPhotoUtilisateur} Déconnexion</a></li>
-								</ul>
-							</li>
+							<li class="nav-user"><a href="deconnexion">${sessionScope.sessionPhotoUtilisateur} Déconnexion</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="connexion">Connexion</a></li>
