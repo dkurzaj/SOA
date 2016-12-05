@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/")
+@WebServlet("/#")
 public class Index extends HttpServlet {
 	public static final String VUE = "/WEB-INF/index.jsp";
 
