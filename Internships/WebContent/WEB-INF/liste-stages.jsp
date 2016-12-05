@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <t:pagetemplate>
 	<jsp:attribute name="title">
@@ -77,32 +78,12 @@
 						<td class="hidden-xs"><img src="http://logok.org/wp-content/uploads/2014/09/Airbus-Logo-2006.png" class="logo img-responsive"/></td>
 						<td id="description" class="vert-align">
 							<h2 class="list-group-item-heading"><a href="details">${stage.getTitre()}</a></h2>
-							<p><b>${stage.getLieu()} - ${stage.getDuree()} mois - à partir du 1er Février (négociable)</b></p>
-							<p class="tagline">Elon Musk en avait parlé en soirée. </p>
+							<p><b>${stage.getLieu()} - ${stage.getDuree()} mois - à partir du <fmt:formatDate value="${stage.getDebut()}" pattern="dd MMM yyyy" /></b></p>
+							<p class="tagline">${stage.getDescription()}</p>
 						</td>
 						<td id="favori" class="vert-align"><a href="#bloops"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></a></td>
 					</tr>
 				</c:forEach>
-				<tr>
-					<td id="nonlu" class=""></td>
-					<td class="hidden-xs"><img src="http://logodatabases.com/wp-content/uploads/2012/07/thales-logo.jpg" class="logo img-responsive"/></td>
-					<td id="description">
-						<h2 class="list-group-item-heading"><a href="details">Thales - Evaluation de textes rédigés par un réseau de neurones, suivant la théorie de Cuil</a></h2>
-						<p><b>Toulouse - 4 à 6 mois - à partir du 1er Février</b></p>
-						<p class="tagline">Amélioration du système pour générer de faux brevets et papiers scientifiques que les chinois essaieront de copier. Mouahaha !</p>
-					</td>
-					<td id="favori" class="vert-align"><a href="#bloops"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a></td>
-				</tr>
-				<tr>
-					<td id="nonlu" class=""></td>
-					<td class="hidden-xs"><img src="https://www.seeklogo.net/wp-content/uploads/2014/12/twitter-logo-vector-download.jpg" class="logo img-responsive"/></td>
-					<td id="description">
-						<h2 class="list-group-item-heading"><a href="details">Twitter - Développement d'un système tweetant directement les pensées</a></h2>
-						<p><b>San Francisco - 6 mois - à partir du 1er Février</b></p>
-						<p class="tagline">Il suffira d'appuyer sur un bouton. C'est le futur !</p>
-					</td>
-					<td id="favori" class="vert-align"><a href="#bloops"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></a></td>
-				</tr>
 			</tbody>
 		</table>
 		
