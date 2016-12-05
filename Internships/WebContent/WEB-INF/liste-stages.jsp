@@ -79,18 +79,17 @@
 
 
 
-  
-  <!-- Liste des stages -->
+<!-- Liste des stages -->
 
 <table class="table table-hover">
   <tbody>
 
     <tr>
       <td id="nonlu" class="info"></td>
-      <td id="logo" class="hidden-xs"><img src="http://logok.org/wp-content/uploads/2014/09/Airbus-Logo-2006.png" class="img-responsive"/></td>
+      <td class="hidden-xs"><img src="http://logok.org/wp-content/uploads/2014/09/Airbus-Logo-2006.png" class="logo img-responsive"/></td>
 
       <td id="description" class="vert-align">
-        <h2 class="list-group-item-heading"><a href="details">Airbus - Développement d'un système de catapulte pour humains</a></h3>
+        <h2 class="list-group-item-heading"><a href="details">Airbus - Développement d'un système de catapulte pour humains</a></h2>
         <p><b>Toulouse - 6 mois - à partir du 1er Février (négociable)</b></p>
         <p class="tagline">Elon Musk en avait parlé en soirée. </p>
       </td>
@@ -100,10 +99,10 @@
 
     <tr>
       <td id="nonlu" class=""></td>
-      <td id="logo" class="hidden-xs"><img src="http://logodatabases.com/wp-content/uploads/2012/07/thales-logo.jpg" class="img-responsive"/></td>
+      <td class="hidden-xs"><img src="http://logodatabases.com/wp-content/uploads/2012/07/thales-logo.jpg" class="logo img-responsive"/></td>
 
       <td id="description">
-        <h2 class="list-group-item-heading"><a href="details">Thales - Evaluation de textes rédigés par un réseau de neurones, suivant la théorie de Cuil</a></h3>
+        <h2 class="list-group-item-heading"><a href="details">Thales - Evaluation de textes rédigés par un réseau de neurones, suivant la théorie de Cuil</a></h2>
         <p><b>Toulouse - 4 à 6 mois - à partir du 1er Février</b></p>
         <p class="tagline">Amélioration du système pour générer de faux brevets et papiers scientifiques que les chinois essaieront de copier. Mouahaha !</p>
       </td>
@@ -113,10 +112,10 @@
 
     <tr>
       <td id="nonlu" class=""></td>
-      <td id="logo" class="hidden-xs"><img src="https://www.seeklogo.net/wp-content/uploads/2014/12/twitter-logo-vector-download.jpg" class="img-responsive"/></td>
+      <td class="hidden-xs"><img src="https://www.seeklogo.net/wp-content/uploads/2014/12/twitter-logo-vector-download.jpg" class="logo img-responsive"/></td>
 
       <td id="description">
-        <h2 class="list-group-item-heading"><a href="details">Twitter - Développement d'un système tweetant directement les pensées</a></h3>
+        <h2 class="list-group-item-heading"><a href="details">Twitter - Développement d'un système tweetant directement les pensées</a></h2>
         <p><b>San Francisco - 6 mois - à partir du 1er Février</b></p>
         <p class="tagline">Il suffira d'appuyer sur un bouton. C'est le futur !</p>
       </td>
