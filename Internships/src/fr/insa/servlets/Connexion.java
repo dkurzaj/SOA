@@ -45,8 +45,8 @@ public class Connexion extends HttpServlet {
 			try {
 				String identite = Connexion.getHTML("http://etud.insa-toulouse.fr/~kurzaj/identite.php?uid=" + userName);
 				session.setAttribute("sessionIdentiteUtilisateur", identite);
-				String photo_img = Connexion.getHTML("http://etud.insa-toulouse.fr/~kurzaj/photo.php?uid=" + userName);
-				session.setAttribute("sessionPhotoUtilisateur", photo_img);
+				String user_id = Connexion.getHTML("http://etud.insa-toulouse.fr/~kurzaj/id.php?uid=" + userName);
+				session.setAttribute("sessionPhotoUtilisateur", "<img src=\"http://etud.insa-toulouse.fr/~ggomez/iky2/imgs/trouverImg.php?num=" + user_id + "\">");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
