@@ -10,7 +10,7 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 	<title><jsp:invoke fragment="title"/></title>
