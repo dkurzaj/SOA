@@ -28,7 +28,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Internshipz</a>
+				<a class="navbar-brand" href="home">Internshipz</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
