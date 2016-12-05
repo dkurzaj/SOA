@@ -7,7 +7,7 @@
 		Liste des stages
 	</jsp:attribute>
 	<jsp:body>
-	
+
 		<!-- Outils de recherche -->
 		<div class="well" id="search-tools">
 			<form class="form-horizontal">
@@ -78,7 +78,12 @@
 						<td class="hidden-xs"><img src="http://logok.org/wp-content/uploads/2014/09/Airbus-Logo-2006.png" class="logo img-responsive"/></td>
 						<td id="description" class="vert-align">
 							<h2 class="list-group-item-heading"><a href="details">${stage.getTitre()}</a></h2>
-							<p><b>${stage.getLieu()} - ${stage.getDuree()} mois - à partir du <fmt:formatDate value="${stage.getDebut()}" pattern="dd MMM yyyy" /></b></p>
+
+							<span class="label label-info">**Année**</span>
+							<span class="label label-success">**Spécialité**</span>
+							<span class="label label-primary">${stage.getLieu()}</span>
+							<span class="label label-default">${stage.getDuree()} mois - à partir du <fmt:formatDate value="${stage.getDebut()}" pattern="dd MMM yyyy" /></span>
+							
 							<p class="tagline">${stage.getDescription()}</p>
 						</td>
 						<td id="favori" class="vert-align"><a href="#bloops"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></a></td>
