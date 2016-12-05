@@ -24,12 +24,13 @@ public class ListeStages extends HttpServlet {
 		st1.setDebut(new Date(2016));
 		st1.setDescription("Elon Musk en avait parlé en soirée.");
 		st1.setDuree(6);
-		st1.setLieu("Toulouse");
+		st1.setLieu("Lyon");
 		st1.setEntreprise(0);
 		
 		liste.add(st1);
 		
 		request.setAttribute("liste", liste);
+		
 		
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}
