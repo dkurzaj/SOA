@@ -10,7 +10,7 @@
 	<jsp:body>
 
     <!-- Outils de recherche -->
-<div class="jumbotron" id="search-tools">
+<div class="well" id="search-tools">
 
 <div class="container">
   <form class="form-horizontal">
@@ -100,7 +100,7 @@
 
     <tr>
       <td id="nonlu" class=""></td>
-      <td id="logo" class="hidden-xs"><img src="http://logodatabases.com/wp-content/uploads/2012/07/thales-logo.jpg" class="img-responsive"/></td>
+      <td class="hidden-xs"><img src="http://logodatabases.com/wp-content/uploads/2012/07/thales-logo.jpg" class="img-responsive"/></td>
 
       <td id="description">
         <h2 class="list-group-item-heading"><a href="details">Thales - Evaluation de textes rédigés par un réseau de neurones, suivant la théorie de Cuil</a></h3>

@@ -10,7 +10,7 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 	<title><jsp:invoke fragment="title"/></title>
@@ -18,7 +18,7 @@
 <body>
 
 	<!-- Navbar -->
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-default">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -28,7 +28,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Internshipz</a>
+				<a class="navbar-brand" href="/">Internshipz</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
