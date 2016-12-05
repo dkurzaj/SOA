@@ -21,6 +21,10 @@ img.details-map {
 	margin-top: -35px;
 }
 
+h2 {
+	font-size:1.5em;
+}
+
 a:hover {
 	text-decoration: none;
 }
