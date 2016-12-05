@@ -29,7 +29,7 @@
 		   		<label for="LM">Lettre de motivation:</label>
 		    	<input type="file" class="form-control" id="LM" accept="application/pdf">
 		  	</div>
-		  	<button type="submit" class="btn btn-default">Envoyer les informations</button>
+		  	<button type="submit" class="btn btn-primary btn-lg">Envoyer les informations</button>
 		</form>
     </jsp:body>
 </t:pagetemplate>
