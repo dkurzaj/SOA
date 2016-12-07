@@ -16,28 +16,20 @@
 				<fieldset>
 
         <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">Nom</label>
-            <div class="col-sm-9">
+            <label for="firstName">Nom</label>
                 <input type="text" id="firstName" placeholder="Nom de l'entreprise" class="form-control" autofocus>
-            </div>
         </div>
         <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-9">
+            <label for="email" >Email</label>
                 <input type="email" id="email" placeholder="Email" class="form-control">
-            </div>
         </div>
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Mot de passe</label>
-            <div class="col-sm-9">
                 <input type="password" id="password" placeholder="Password" class="form-control">
-            </div>
         </div>
         
         <div class="form-group">
-            <div class="col-sm-9 col-sm-offset-3">
                 <button type="submit" class="btn btn-primary btn-block">Register</button>
-            </div>
         </div>
     
     
