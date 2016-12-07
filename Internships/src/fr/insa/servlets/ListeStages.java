@@ -37,10 +37,7 @@ public class ListeStages extends HttpServlet {
 		st2.setEntreprise(0);
 		liste.add(st2);
 		
-		
-		
 		request.setAttribute("liste", liste);
-		
 		
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}
