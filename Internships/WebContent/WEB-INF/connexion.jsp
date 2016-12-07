@@ -56,7 +56,7 @@
 				<div class="well col-sm-4 col-sm-offset-1">
 					<form method="post" action="connexion" class="form form-inline">
 						<fieldset>
-							<img src="http://www.logoinlogo.com/list-logo/technology.jpg" class="logo img-responsive"/>
+							<img src="http://i1.kym-cdn.com/photos/images/newsfeed/001/112/704/8a8.jpg" class="logo img-responsive"/>
 							<p><strong>Entreprises :</strong><br/></p>
 
 							<div class="form-group">
