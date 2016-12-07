@@ -42,8 +42,8 @@
 								<span class="erreur">${form.erreurs['motdepasse']}</span>
 							</div>
 
-							<input type="hidden" name="type-connexion" value="insa"/>
-							<input type="submit" name="connexion-insa" value="Connexion" class="btn btn-primary"/>
+
+							<input type="submit" name="connexion-insa" value="Connexion" class="btn btn-primary" />
 
 							<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 
@@ -60,19 +60,19 @@
 							<p><strong>Entreprises :</strong><br/></p>
 
 							<div class="form-group">
-								<label class="sr-only" for="nom">Nom : </label>
-								<input type="text" id="nom" name="nom" value="<c:out value="${utilisateur.nom}"/>" size="20" maxlength="60" placeholder="Identifiant" class="form-control"/>
+								<label class="sr-only" for="nom-entreprise">Nom : </label>
+								<input type="text" id="nom-entreprise" name="nom-entreprise" value="<c:out value="${utilisateur.nom}"/>" size="20" maxlength="60" placeholder="Identifiant" class="form-control"/>
 								<span class="erreur">${form.erreurs['email']}</span>
 							</div>
 
 							<div class="form-group">
-								<label class="sr-only" for="motdepasse">Mot de passe : </label>
-								<input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" placeholder="Mot de passe" class="form-control"/>
+								<label class="sr-only" for="motdepasse-entreprise">Mot de passe : </label>
+								<input type="password" id="motdepasse-entreprise" name="motdepasse-entreprise" value="" size="20" maxlength="20" placeholder="Mot de passe" class="form-control"/>
 								<span class="erreur">${form.erreurs['motdepasse']}</span>
 							</div>
 							
-							<input type="hidden" name="type-connexion" value="entreprise"/>							
-							<input type="submit" name="connexion-entreprise" value="Connexion" class="btn btn-primary"/>
+							<input type="hidden" name="entreprise" value="entreprise"/>							
+							<input type="submit" name="connexion-entreprise" value="Connexion" class="btn btn-primary" />
 							<p>ou <a href="inscription-entreprise">inscrivez-vous</a></p>
 							
 							<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>

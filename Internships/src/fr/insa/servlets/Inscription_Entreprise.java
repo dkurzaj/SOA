@@ -14,13 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/connexion")
-public class Connexion extends HttpServlet {
-	public static final String VUE = "/WEB-INF/connexion.jsp";
+@WebServlet("/inscription-entreprise")
+public class Inscription_Entreprise extends HttpServlet {
+	public static final String VUE = "/WEB-INF/inscription-entreprise.jsp";
 	private static final String CHAMP_NOM = "nom";
 	private static final String CHAMP_PASS = "motdepasse";
-	private static final String TYPE_CONNEXION = "type-connexion";
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
@@ -29,80 +28,64 @@ public class Connexion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		/**
+		* Pour la connexion Etudiant
+		*/
+		
 		//Récupération des variables
 		String userName = request.getParameter(CHAMP_NOM);
 		String pwd = request.getParameter(CHAMP_PASS);
 		boolean connected = false;
-		String typeConnexion = request.getParameter(TYPE_CONNEXION);
 		
-		switch(typeConnexion) {
-		case "insa":			
-			/**
-			* Pour la connexion Etudiant
-			*/
+		// Interrogation du LDAP
+		try {
+			String resp = Inscription_Entreprise.sendPost("http://etud.insa-toulouse.fr/~kurzaj/",
+					"uid=" + java.net.URLEncoder.encode(userName, "UTF-8") + "&pwd="
+							+ java.net.URLEncoder.encode(pwd, "UTF-8"));
+			if (resp.equals("true")) {
+				connected = true;
+			}
 
-			// Interrogation du LDAP
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Could not connect to the LDAP proxy server !");
+		}
+		
+		//Affichage si connecté
+		if (connected) {
+			System.out.println("User connected");
+			HttpSession session = request.getSession();
+			session.setAttribute("sessionNomUtilisateur", userName);
 			try {
-				String resp = Connexion.sendPost("http://etud.insa-toulouse.fr/~kurzaj/",
-						"uid=" + java.net.URLEncoder.encode(userName, "UTF-8") + "&pwd="
-								+ java.net.URLEncoder.encode(pwd, "UTF-8"));
-				if (resp.equals("true")) {
-					connected = true;
-				}
-
+				String identite = Inscription_Entreprise
+						.getHTML("http://etud.insa-toulouse.fr/~kurzaj/identite.php?uid=" + userName);
+				session.setAttribute("sessionIdentiteUtilisateur", identite);
+				String user_id = Inscription_Entreprise.getHTML("http://etud.insa-toulouse.fr/~kurzaj/id.php?uid=" + userName);
+				session.setAttribute("sessionPhotoUtilisateur",
+						"<img src=\"http://etud.insa-toulouse.fr/~ggomez/iky2/imgs/trouverImg.php?num=" + user_id
+								+ "\">");
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("Could not connect to the LDAP proxy server !");
 			}
-			
-			//Affichage si connecté
-			if (connected) {
-				System.out.println("User connected");
-				HttpSession session = request.getSession();
-				session.setAttribute("sessionNomUtilisateur", userName);
-				try {
-					String identite = Connexion
-							.getHTML("http://etud.insa-toulouse.fr/~kurzaj/identite.php?uid=" + userName);
-					session.setAttribute("sessionIdentiteUtilisateur", identite);
-					String user_id = Connexion.getHTML("http://etud.insa-toulouse.fr/~kurzaj/id.php?uid=" + userName);
-					session.setAttribute("sessionPhotoUtilisateur",
-							"<img src=\"http://etud.insa-toulouse.fr/~ggomez/iky2/imgs/trouverImg.php?num=" + user_id
-									+ "\">");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			else {
-				System.out.println("User not connected");
-			}
-
-			break;
-		case "entreprise":
-			/**
-			* Pour la connexion Entreprise
-			*/
-			
-			//Connexion (à adapter plus tard pour interroger la BDD)
-			System.out.println("Connexion Entreprise");
-			System.out.println("Username : "+ userName);
-			System.out.println("Password : "+ pwd);
-			
-			//Affichage si connecté
-			if (connected) {
-				System.out.println("Woohoo, vous êtes conencté !");
-			}
-			else {
-				System.out.println("User not connected");
-			}
-			
-			
-			break;
-		default:
-			System.out.println("Don't mess with my forms !");
+		}
+		else {
+			System.out.println("User not connected");
 		}
 
+		/**
+		* Pour la connexion Entreprise
+		*/
+		
+		
+		
+		/**
+		* Pour l'inscription Entreprise
+		*/
+		
+		
 		
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+
 	}
 
 	public static String getHTML(String urlToRead) throws Exception {
