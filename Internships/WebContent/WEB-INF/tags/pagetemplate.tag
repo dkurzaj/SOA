@@ -34,9 +34,19 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="liste-stages">Tous les stages</a></li>
-					<li><a href="mes-stages">Mes stages</a></li>
-					<li><a href="favoris">Favoris</a></li>
+					<li class="${pageContext.request.requestURI eq '/Internships/WEB-INF/liste-stages.jsp' ? 'active' : ''}">
+						<a href="liste-stages">Tous les stages</a>
+					</li>
+					<c:if test="${pageContext.request.requestURI eq '/Internships/WEB-INF/details.jsp'}">
+						<li class="active">
+							<a href="#">Détails de l'offre</a>
+						</li>
+					</c:if>
+					<c:if test="${pageContext.request.requestURI eq '/Internships/WEB-INF/candidature.jsp'}">
+						<li class="active">
+							<a href="#">Candidature</a>
+						</li>
+					</c:if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
