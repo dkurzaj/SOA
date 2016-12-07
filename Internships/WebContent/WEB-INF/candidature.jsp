@@ -7,12 +7,12 @@
       Page de candidature
     </jsp:attribute>
 	<jsp:body>
-		<h1 class="text-center">Nom de l'entreprise qui propose l'offre
-			<br>
-			<small>Titre de l'offre</small>
+		<h1 class="text-center">Airbus
 		</h1>
+		<h1><small>${stage.getTitre()}</small></h1>
 					
-		<p> Description de l'offre</p>	
+		<p>${stage.getDescription()}</p><br/>
+		<h2>Postuler</h2>
 	    <form>
 	    
 			<div class="form-group">
