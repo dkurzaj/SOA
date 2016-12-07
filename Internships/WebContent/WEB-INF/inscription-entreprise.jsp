@@ -25,7 +25,6 @@
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary btn-block">Register</button>
 				</div>
-				<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 			</form>
 		</div>
 	</jsp:body>
