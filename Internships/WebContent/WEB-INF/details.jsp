@@ -21,8 +21,8 @@
     		<div class="col-xs-3">
     			<p><img src="https://fr.mappy.com/front-services/map/31000-toulouse" alt="Carte position du stage" class="details-map"/></p>
     			<p>
-    				<a href="/" class="btn btn-primary">Apply</a>
-    				<a href="/" class="btn btn-default">Message</a>
+    				<a href="candidature" class="btn btn-primary">Candidater</a>
+    				<a href="/" class="btn btn-default">Contacter</a>
     			</p>
     		</div>
     	</div>
