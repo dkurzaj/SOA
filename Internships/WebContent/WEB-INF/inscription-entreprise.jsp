@@ -7,83 +7,65 @@
 		Page de connexion
 	</jsp:attribute>
 	<jsp:body>
-		<c:choose>
-			<c:when test="${!empty sessionScope.sessionNomUtilisateur}">
-				<%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
-				<p class="succes">Bienvenue : ${sessionScope.sessionIdentiteUtilisateur}.</p>
-				${sessionScope.sessionPhotoUtilisateur}
-				<form method="get" action="deconnexion" class="form">
-					<fieldset>
-						<input type="submit" value="Me déconnecter" class="btn btn-primary" />
-					</fieldset>
-				</form>
-			</c:when>
-			<c:otherwise>
-				<h1 class="page-header">Connexion</h1>
+	
+		<h1 class="page-header">Inscription Entreprise</h1>				
+		
+		<!-- Connexion Entreprise -->
+		<div class="well col-sm-8 col-sm-offset-2">
+			<form method="post" action="inscription-entreprise" class="form form-inline">
+				<fieldset>
+
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Nom</label>
+            <div class="col-sm-9">
+                <input type="text" id="firstName" placeholder="Nom de l'entreprise" class="form-control" autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-9">
+                <input type="email" id="email" placeholder="Email" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Mot de passe</label>
+            <div class="col-sm-9">
+                <input type="password" id="password" placeholder="Password" class="form-control">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+        </div>
+    
+    
+					<div class="form-group">
+						<label class="sr-only" for="nom">Nom : </label>
+						<input type="text" id="nom-entreprise" name="nom" value="<c:out value="${utilisateur.nom}"/>" size="20" maxlength="60" placeholder="Identifiant" class="form-control"/>
+						<span class="erreur">${form.erreurs['email']}</span>
+					</div>
+	
+					<div class="form-group">
+						<label class="sr-only" for="motdepasse">Mot de passe : </label>
+						<input type="password" id="motdepasse" name="motdepasse-entreprise" value="" size="20" maxlength="20" placeholder="Mot de passe" class="form-control"/>
+						<span class="erreur">${form.erreurs['motdepasse']}</span>
+					</div>
+					
 
 
 
-				<!-- Connexion Etudiant -->
-				<div class="well col-sm-4 col-sm-offset-1">
-					<form method="post" action="connexion" class="form form-inline">
-						<fieldset>
-							<img src="https://www.creatis.insa-lyon.fr/site7/sites/www.creatis.insa-lyon.fr/files/INSA-LYON_logo-couleurs_reduit.jpg" class="logo img-responsive"/>
-							<p><strong>Etudiants et staff INSA :</strong><br/>Vous pouvez vous connecter en utilisant vos identifiants INSA.</p>
 
-							<div class="form-group">
-								<label class="sr-only" for="nom">Nom : </label>
-								<input type="text" id="nom" name="nom" value="<c:out value="${utilisateur.nom}"/>" size="20" maxlength="60" placeholder="Identifiant" class="form-control"/>
-								<span class="erreur">${form.erreurs['email']}</span>
-							</div>
-
-							<div class="form-group">
-								<label class="sr-only" for="motdepasse">Mot de passe : </label>
-								<input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" placeholder="Mot de passe" class="form-control"/>
-								<span class="erreur">${form.erreurs['motdepasse']}</span>
-							</div>
-
-
-							<input type="submit" name="connexion-insa" value="Connexion" class="btn btn-primary" />
-
-							<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
-
-						</fieldset>
-					</form>
-				</div>
+						
+					<input type="submit" name="connexion-entreprise" value="Connexion" class="btn btn-primary" />
+					
+					<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+	
+				</fieldset>
+			</form>
+		</div>
 				
-				
-				<!-- Connexion Entreprise -->
-				<div class="well col-sm-4 col-sm-offset-1">
-					<form method="post" action="connexion" class="form form-inline">
-						<fieldset>
-							<img src="http://www.logoinlogo.com/list-logo/technology.jpg" class="logo img-responsive"/>
-							<p><strong>Entreprises :</strong><br/></p>
-
-							<div class="form-group">
-								<label class="sr-only" for="nom-entreprise">Nom : </label>
-								<input type="text" id="nom-entreprise" name="nom-entreprise" value="<c:out value="${utilisateur.nom}"/>" size="20" maxlength="60" placeholder="Identifiant" class="form-control"/>
-								<span class="erreur">${form.erreurs['email']}</span>
-							</div>
-
-							<div class="form-group">
-								<label class="sr-only" for="motdepasse-entreprise">Mot de passe : </label>
-								<input type="password" id="motdepasse-entreprise" name="motdepasse-entreprise" value="" size="20" maxlength="20" placeholder="Mot de passe" class="form-control"/>
-								<span class="erreur">${form.erreurs['motdepasse']}</span>
-							</div>
-							
-							<input type="hidden" name="entreprise" value="entreprise"/>							
-							<input type="submit" name="connexion-entreprise" value="Connexion" class="btn btn-primary" />
-							<p>ou <a href="inscription-entreprise">inscrivez-vous</a></p>
-							
-							<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
-
-						</fieldset>
-					</form>
-				</div>
-				
-				
-			</c:otherwise>
-		</c:choose>
 	</jsp:body>
 </t:pagetemplate>
 
