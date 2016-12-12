@@ -23,7 +23,6 @@ public class CreateDB {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
         List<Etudiant> result = entityManager.createQuery( "from Etudiant", Etudiant.class ).getResultList();
 		for ( Etudiant etud : (List<Etudiant>) result ) {
