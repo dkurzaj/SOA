@@ -77,3 +77,9 @@ Internships/.classpath
 Internships/.settings/*
 Internships/.settings
 Internships/.project*
+*.prefs
+Internships/.settings/org.eclipse.wst.common.project.facet.core.prefs.xml
+*.xml
+Internships/.settings/org.eclipse.wst.common.project.facet.core.xml
+*.tern-project
+Internships/.settings/org.eclipse.wst.common.project.facet.core.xml
