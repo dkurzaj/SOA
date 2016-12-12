@@ -7,10 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
-
-
-
 public class CreateDB {
 
 	
@@ -35,7 +31,7 @@ public class CreateDB {
 	public static void createStages() {
 		Stage st1 = new Stage();
 		st1.setTitre("Airbus - Développement d'un système de catapulte pour humains");
-		st1.setDebut(new Date(2016));
+		st1.setDebut(new Date(new java.util.Date().getTime()));
 		st1.setDescription("Elon Musk en avait parlé en soirée.");
 		st1.setDuree(6);
 		st1.setLieu("Toulouse");
@@ -43,7 +39,7 @@ public class CreateDB {
 		
 		Stage st2 = new Stage();
 		st2.setTitre("Pas Airbus - Nihil morati post haec militares avidi saepe turbarum adorti sunt Montium primum, qui divertebat in proximo");
-		st2.setDebut(new Date(1480950404));
+		st2.setDebut(new Date(new java.util.Date().getTime()));
 		st2.setDescription("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
 		st2.setDuree(6);
 		st2.setLieu("Lyon");
