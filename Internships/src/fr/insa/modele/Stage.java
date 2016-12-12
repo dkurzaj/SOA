@@ -1,6 +1,6 @@
 package fr.insa.modele;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,6 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table( name = "STAGES" )
 public class Stage {
 	
 	private long id;
