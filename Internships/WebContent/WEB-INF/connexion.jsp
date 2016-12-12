@@ -50,7 +50,7 @@
 				<!-- Connexion Entreprise -->
 				<div class="well col-sm-4 col-sm-offset-1">
 					<form method="post" action="connexion" class="form">
-						<img src="http://i1.kym-cdn.com/photos/images/newsfeed/001/112/704/8a8.jpg" class="logo img-responsive"/>
+						<img src="http://desmentorspourentreprendre.com/wp-content/uploads/2013/06/R%C3%A9ussir-avec-ses-associ%C3%A9s-lors-de-la-cr%C3%A9ation-de-son-entreprise.jpg" class="logo img-responsive"/>
 						<p><strong>Entreprises :</strong></p>
 
 						<div class="form-group">
