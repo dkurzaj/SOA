@@ -74,3 +74,6 @@ Servers/Tomcat v8.5 Server at localhost-config/*
 Internships/.classpath
 *.classpath
 Internships/.classpath
+Internships/.settings/*
+Internships/.settings
+Internships/.project*
