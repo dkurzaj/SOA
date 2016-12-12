@@ -13,8 +13,8 @@ public class CreateDB {
 	
 	public static void main(String[] args) {	
 		
-		//createEtudiants();
-		//createStages();
+		createEtudiants();
+		createStages();
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
