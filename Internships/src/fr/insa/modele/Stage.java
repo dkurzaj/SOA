@@ -6,44 +6,48 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.ForeignKey;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Stage {
 	
-	private long id;
+	private long idStage;
 	private String titre;
 	private String lieu;
-	private Date debut;
+	private Date debutStage;
 	private int duree;
-	private String description;
-	private long entreprise;
+	private String descriptionStage;
+	private Entreprise entreprise;
 	
 	public Stage () {
 		
 	}
 	
-	public Stage (String titre, String lieu, Date debut, int duree, String description, long entreprise) {
+	public Stage (String titre, String lieu, Date debut, int duree, String description, Entreprise entreprise) {
 		this.titre = titre;
 		this.lieu = lieu;
-		this.debut = debut;
+		this.debutStage = debut;
 		this.duree = duree;
-		this.description = description;
+		this.descriptionStage = description;
 		this.entreprise = entreprise;
 	}
+	
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
 	public long getId() {
-		return id;
+		return idStage;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.idStage = id;
 	}
 	public String getTitre() {
 		return titre;
@@ -60,10 +64,10 @@ public class Stage {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "STAGE_DATE")
 	public Date getDebut() {
-		return debut;
+		return debutStage;
 	}
 	public void setDebut(Date debut) {
-		this.debut = debut;
+		this.debutStage = debut;
 	}
 	public int getDuree() {
 		return duree;
@@ -71,16 +75,20 @@ public class Stage {
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
+	@Type(type="text")
 	public String getDescription() {
-		return description;
+		return descriptionStage;
 	}
 	public void setDescription(String description) {
-		this.description = description;
+		this.descriptionStage = description;
 	}
-	public long getEntreprise() {
+	
+	@ManyToOne
+    @JoinColumn(name = "entreprise_id",foreignKey = @ForeignKey(name = "ENTREPRISE_ID_FK"))
+	public Entreprise getEntreprise() {
 		return entreprise;
 	}
-	public void setEntreprise(long entreprise) {
+	public void setEntreprise(Entreprise entreprise) {
 		this.entreprise = entreprise;
 	}
 	

@@ -3,7 +3,13 @@
 	<persistence-unit name="Internships">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>fr.insa.modele.Etudiant</class>
+		<class>fr.insa.modele.Entreprise</class>
+		<class>fr.insa.modele.Ecole</class>
+		<class>fr.insa.modele.CV</class>
+		<class>fr.insa.modele.LM</class>
 		<class>fr.insa.modele.Stage</class>
+		<class>fr.insa.modele.Postuler</class>		
+		<class>fr.insa.modele.Convention</class>
 		<properties>
 			<property name="hibernate.ejb.cfgfile" value="hibernate.cfg.xml"/>
 		</properties>

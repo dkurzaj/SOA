@@ -3,13 +3,11 @@ package fr.insa.modele;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Etudiant {
-	private long id;
+	private long idEtudiant;
 	private String nom;
 	private String prenom;
 	private String specialite;
@@ -29,11 +27,11 @@ public class Etudiant {
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
 	public long getId() {
-		return id;
+		return idEtudiant;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.idEtudiant = id;
 	}
 
 	public String getNom() {
