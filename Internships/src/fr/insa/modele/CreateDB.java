@@ -15,6 +15,7 @@ public class CreateDB {
 		
 		createEtudiants();
 		createStages();
+
 	}
 	
 	public static void createStages() {

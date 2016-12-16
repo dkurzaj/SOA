@@ -3,7 +3,11 @@ package fr.insa.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,39 +24,18 @@ public class Suivi_candidatures extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Stage stage = new Stage();
-		stage.setTitre("Stage Big Data IOT Machine Learning ElasticSearch Spring REST SOAP NTM Angular Hibernate");
-		stage.setLieu("Saint-Vincent et les Grenadines");
-		stage.setDescription("Le top meilleur stage, vous allez tellement aimer que vous allez nous supplier de vous embaucher au SMIC après.");
-		
-		ArrayList<Etudiant> liste = new ArrayList<Etudiant>();
 
-		Etudiant e1 = new Etudiant();
-		e1.setNom("Gagarine");
-		e1.setPrenom("Youri");
-		liste.add(e1);
-		
-		Etudiant e2 = new Etudiant();
-		e2.setNom("Vador");
-		e2.setPrenom("Dark");
-		liste.add(e2);
-		
-		Etudiant e3 = new Etudiant();
-		e3.setNom("Salvador");
-		e3.setPrenom("Henri");
-		liste.add(e3);
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		Etudiant e4 = new Etudiant();
-		e4.setNom("Mariano");
-		e4.setPrenom("Luis");
-		liste.add(e4);
-		
-		Etudiant e5 = new Etudiant();
-		e5.setNom("Tare");
-		e5.setPrenom("Guy");
-		liste.add(e5);
-		
-		request.setAttribute("liste", liste);
+		entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+        List<Etudiant> liste = entityManager.createQuery( "from Etudiant", Etudiant.class ).getResultList();
+		Stage stage = entityManager.createQuery("from Stage", Stage.class).getResultList().get(0);
+        
+		entityManager.getTransaction().commit();
+        entityManager.close();
+        request.setAttribute("liste", liste);
 		request.setAttribute("stage", stage);
 
 
