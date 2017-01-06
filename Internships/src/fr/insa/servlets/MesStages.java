@@ -20,12 +20,12 @@ public class MesStages extends HttpServlet {
 		ArrayList<Stage> liste = new ArrayList<Stage>();
 		
 		Stage st1 = new Stage();
-		st1.setTitre("Airbus - Développement d'un système de catapulte pour humains");
+		st1.setTitre("Airbus - Dï¿½veloppement d'un systï¿½me de catapulte pour humains");
 		st1.setDebut(new Date(2016));
-		st1.setDescription("Elon Musk en avait parlé en soirée.");
+		st1.setDescription("Elon Musk en avait parlï¿½ en soirï¿½e.");
 		st1.setDuree(6);
 		st1.setLieu("Lyon");
-		st1.setEntreprise(0);
+		//st1.setEntreprise(0);
 		liste.add(st1);
 		
 		Stage st2 = new Stage();
@@ -34,7 +34,7 @@ public class MesStages extends HttpServlet {
 		st2.setDescription("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 		st2.setDuree(6);
 		st2.setLieu("Lyon");
-		st2.setEntreprise(0);
+		//st2.setEntreprise(0);
 		liste.add(st2);
 		
 		
