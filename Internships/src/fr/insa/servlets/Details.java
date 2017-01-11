@@ -20,13 +20,15 @@ public class Details extends HttpServlet {
 	public static final String VUE = "/WEB-INF/details.jsp";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Long id = Long.parseLong(request.getParameter("id"));
 	
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
-        List<Stage> liste = entityManager.createQuery( "from Stage", Stage.class ).getResultList();
+        List<Stage> liste = entityManager.createQuery( "FROM Stage WHERE id = :id", Stage.class ).setParameter("id", id).getResultList();
 		entityManager.getTransaction().commit();
         entityManager.close();
         

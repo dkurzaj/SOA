@@ -23,6 +23,7 @@ public class ListeStages extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
