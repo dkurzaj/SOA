@@ -77,7 +77,7 @@
 						<td id="nonlu" class="info"></td>
 						<td class="hidden-xs"><img src="http://logok.org/wp-content/uploads/2014/09/Airbus-Logo-2006.png" class="logo img-responsive"/></td>
 						<td id="description" class="vert-align">
-							<h2 class="list-group-item-heading"><a href="details">${stage.getTitre()}</a></h2>
+							<h2 class="list-group-item-heading"><a href="details?id=${stage.getIdStage()}">${stage.getTitre()}</a></h2>
 
 							<span class="label label-info">**Année**</span>
 							<span class="label label-success">**Spécialité**</span>

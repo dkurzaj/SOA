@@ -42,11 +42,11 @@ public class Stage {
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
-	public long getId() {
+	public long getIdStage() {
 		return idStage;
 	}
 
-	public void setId(long id) {
+	public void setIdStage(long id) {
 		this.idStage = id;
 	}
 	public String getTitre() {
