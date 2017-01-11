@@ -21,13 +21,14 @@ public class Candidature extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Long id = Long.parseLong(request.getParameter("id"));
 
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
-		Stage stage = entityManager.createQuery("from Stage", Stage.class).getResultList().get(0);
+		Stage stage = entityManager.createQuery( "FROM Stage WHERE id = :id", Stage.class ).setParameter("id", id).getResultList().get(0);
         
 		entityManager.getTransaction().commit();
         entityManager.close();
