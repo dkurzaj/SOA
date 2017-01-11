@@ -23,6 +23,7 @@ public class Postuler {
 	private LM lm;
 	private Stage stage;
 	private Date datePostuler;
+	private Status status;
 	
 	public Postuler() {
 		super();
@@ -35,6 +36,7 @@ public class Postuler {
 		this.lm = lm;
 		this.stage = stage;
 		this.datePostuler = datePostuler;
+		this.status=Status.ENVOYEE;
 	}
 
 	@Id
@@ -98,6 +100,36 @@ public class Postuler {
 		this.datePostuler = datePostuler;
 	}
 	
+	public void etapeSuivanteValidation(){
+		
+		switch(this.status) {
+			case ENVOYEE:
+				this.status=Status.ACCEPTEE_ENT;
+				break;
+			case ACCEPTEE_ENT:
+				this.status=Status.ACCEPTEE_INSA;
+				break;
+			case ACCEPTEE_INSA:
+				this.status=Status.VALIDEE;
+				break;
+			default:
+				break;		
+		}
+	}
+	public void refuserCandidature(){
+		
+		switch(this.status) {
+			case ENVOYEE:
+				this.status=Status.REFUSEE_ENT;
+				break;
+			case ACCEPTEE_ENT:
+				this.status=Status.REFUSEE_INSA;
+				break;
+			default:
+				break;
+		}
+	
+	}
 	
 	
 
