@@ -10,7 +10,7 @@
     <jsp:body>
     	<div class="row">
     		<div class="col-xs-12">
-    			<h1 class="page-header"><span class="details-entreprise">Company</span> <span class="details-offre">${stage.getTitre()}</span></h1>
+    			<h1 class="page-header"><span class="details-entreprise"></span> <span class="details-offre">${stage.getTitre()}</span></h1>
 				<h2><span class="details-lieu">${stage.getLieu()}</span> <span class="details-duration">${stage.getDuree()} mois</span> <span class="details-start"> à partir du <fmt:formatDate value="${stage.getDebut()}" pattern="dd MMM yyyy" /></span></h2>
     		</div>
     		<div class="col-xs-9">
@@ -21,7 +21,7 @@
     		<div class="col-xs-3">
     			<p><img src="https://fr.mappy.com/front-services/map/31000-toulouse" alt="Carte position du stage" class="details-map"/></p>
     			<p>
-    				<a href="candidature" class="btn btn-primary">Candidater</a>
+    				<a href="candidature?id=${stage.getId()}" class="btn btn-primary">Candidater</a>
     				<a href="/" class="btn btn-default">Contacter</a>
     			</p>
     		</div>

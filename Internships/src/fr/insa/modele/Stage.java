@@ -18,7 +18,7 @@ import org.hibernate.annotations.Type;
 @Entity
 public class Stage {
 	
-	private long idStage;
+	private long id;
 	private String titre;
 	private String lieu;
 	private Date debutStage;
@@ -42,12 +42,12 @@ public class Stage {
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
-	public long getIdStage() {
-		return idStage;
+	public long getId() {
+		return id;
 	}
 
-	public void setIdStage(long id) {
-		this.idStage = id;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getTitre() {
 		return titre;
