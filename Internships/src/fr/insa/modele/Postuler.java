@@ -42,11 +42,11 @@ public class Postuler {
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
-	public long getId() {
+	public long getIdPostuler() {
 		return idPostuler;
 	}
 
-	public void setId(long id) {
+	public void setIdPostuler(long id) {
 		this.idPostuler = id;
 	}
 
@@ -100,6 +100,15 @@ public class Postuler {
 		this.datePostuler = datePostuler;
 	}
 	
+	
+	public Status getStatus(){
+		return this.status;
+	}
+	
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	public void etapeSuivanteValidation(){
 		
 		switch(this.status) {

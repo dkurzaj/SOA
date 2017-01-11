@@ -2,7 +2,6 @@ package fr.insa.servlets;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.insa.modele.Etudiant;
+import fr.insa.modele.Postuler;
 import fr.insa.modele.Stage;
 
 @WebServlet("/suivi_candidatures")
@@ -24,20 +23,27 @@ public class Suivi_candidatures extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
+		String action = request.getParameter("action");
+		if (action!=null){
+			if (action.equals("accepter")){
+				//faire le accepter
+			}
+			else if (action.equals("refuser")){
+				//faire le refus
+			}
+		}
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
-        List<Etudiant> liste = entityManager.createQuery( "from Etudiant", Etudiant.class ).getResultList();
+        List<Postuler> liste = entityManager.createQuery( "from Postuler", Postuler.class ).getResultList();
 		Stage stage = entityManager.createQuery("from Stage", Stage.class).getResultList().get(0);
         
 		entityManager.getTransaction().commit();
         entityManager.close();
         request.setAttribute("liste", liste);
 		request.setAttribute("stage", stage);
-
 
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}
