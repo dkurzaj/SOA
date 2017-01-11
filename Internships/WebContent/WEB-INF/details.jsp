@@ -10,7 +10,7 @@
     <jsp:body>
     	<div class="row">
     		<div class="col-xs-12">
-    			<h1 class="page-header"><span class="details-entreprise"></span> <span class="details-offre">${stage.getTitre()}</span></h1>
+    			<h1 class="page-header"><span class="details-entreprise"></span> <span class="details-offre">${stage.getEntreprise().getNom()} - ${stage.getTitre()}</span></h1>
 				<h2><span class="details-lieu">${stage.getLieu()}</span> <span class="details-duration">${stage.getDuree()} mois</span> <span class="details-start"> à partir du <fmt:formatDate value="${stage.getDebut()}" pattern="dd MMM yyyy" /></span></h2>
     		</div>
     		<div class="col-xs-9">
