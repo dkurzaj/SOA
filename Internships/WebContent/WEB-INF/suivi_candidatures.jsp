@@ -15,16 +15,18 @@
 	  <!-- Liste des candidats -->	
 		<table class="table table-hover">
 	  		<tbody>
-	  		    <c:forEach items="${liste}" var="etudiant">
+	  		    <c:forEach items="${liste}" var="postuler">
 		  		    <tr>
 		  		    	<td class="info"></td>
 						<td class="hidden-xs" style ="vertical-align: middle;"><img src="gerard.jpg" alt="error" width="150"></td>
 						<td class="vert-align">
-		        			<h2 class="list-group-item-heading"><a href="details">${etudiant.getPrenom()} ${etudiant.getNom()}</a></h3>
+		        			<h2 class="list-group-item-heading"><a href="details">${postuler.getEtud().getPrenom()} ${postuler.getEtud().getNom()}</a></h3>
 		        			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 		        			<form method="get" action="aa">
-								<button type="submit" class="btn btn-success">CV</button>
-								<button type="submit" class="btn btn-primary">Lettre</button>							
+								<button type="submit" class="btn btn-primary">CV</button>
+								<button type="submit" class="btn btn-primary">Lettre</button>
+								<a href="#?action=accepter&idoffre=${postuler.getIdPostuler()}" class="btn btn-success">Accepter la demande</a>
+								<a href="#?action=refuser&idoffre=${postuler.getIdPostuler()}"type="button" class="btn btn-success">Refuser la demande</button>										
 							</form>
 						</td>
 		        	</tr>
