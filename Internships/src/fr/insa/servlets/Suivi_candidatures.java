@@ -23,15 +23,7 @@ public class Suivi_candidatures extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String action = request.getParameter("action");
-		if (action!=null){
-			if (action.equals("accepter")){
-				//faire le accepter
-			}
-			else if (action.equals("refuser")){
-				//faire le refus
-			}
-		}
+
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -44,6 +36,17 @@ public class Suivi_candidatures extends HttpServlet{
         entityManager.close();
         request.setAttribute("liste", liste);
 		request.setAttribute("stage", stage);
+		
+		
+		String action = request.getParameter("action");
+		if (action!=null){
+			if (action.equals("accepter")){
+				//faire le accepter
+			}
+			else if (action.equals("refuser")){
+				//faire le refus
+			}
+		}
 
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}
