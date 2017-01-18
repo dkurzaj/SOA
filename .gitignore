@@ -92,3 +92,15 @@ Internships/.settings/org.eclipse.wst.common.project.facet.core.prefs.xml
 Internships/.settings/org.eclipse.wst.common.project.facet.core.xml
 *.tern-project
 Internships/src/fr/insa/modele/*_.java
+/bin/
+
+.settings/.jsdtscope
+*.component
+.settings/org.eclipse.wst.jsdt.ui.superType.container
+*.name
+Internships/.project
+*.prefs
+WebContent/META-INF/MANIFEST.MF
+*.prefs
+Internships/.project
+Internships/.project
