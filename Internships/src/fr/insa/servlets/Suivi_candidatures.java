@@ -7,6 +7,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Root;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,24 +45,26 @@ public class Suivi_candidatures extends HttpServlet{
 		
 		
 		String action = request.getParameter("action");
-		int id;
+		long id;
 		//Postuler postulation;
 		if (action!=null){
 			if (action.equals("accepter")){
-				id=Integer.parseInt(request.getParameter("idpost"));
-//				postulation=liste.get(id-1);
-//				postulation.etapeSuivanteValidation();
+				id=Long.parseLong(request.getParameter("idpost"));
 				EntityManager em = entityManagerFactory.createEntityManager();
 				Postuler post=em.find(Postuler.class, id);
-				em.getTransaction().begin();
+				em.getTransaction().begin();						
 				post.setStatus(Status.ACCEPTEE_ENT);
 				em.getTransaction().commit();
 		        em.close();
 			}
 			else if (action.equals("refuser")){
-				id=Integer.parseInt(request.getParameter("idpost"));
-//				postulation=liste.get(id-1);
-//				postulation.refuserCandidature();
+				id=Long.parseLong(request.getParameter("idpost"));
+				EntityManager em = entityManagerFactory.createEntityManager();
+				Postuler post=em.find(Postuler.class, id);
+				em.getTransaction().begin();						
+				post.setStatus(Status.REFUSEE_ENT);
+				em.getTransaction().commit();
+		        em.close();
 			}
 		}
 
