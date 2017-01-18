@@ -104,3 +104,4 @@ WebContent/META-INF/MANIFEST.MF
 *.prefs
 Internships/.project
 Internships/.project
+Internships/src/hibernate.cfg.xml
