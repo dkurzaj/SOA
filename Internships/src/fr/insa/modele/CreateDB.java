@@ -21,15 +21,15 @@ public class CreateDB {
 		Entreprise e1 = new Entreprise("Airbus", "15 avenue des avions 31000 Toulouse","Grand groupe","Aeronautique");
 		Entreprise e3 = new Entreprise("Thales", "15 avenue des avions 75000 Paris","Grand groupe","Aeronautique");
 		Stage st1 = new Stage();
-		st1.setTitre("Airbus - DÃ©veloppement d'un systÃ¨me de catapulte pour humains");
+		st1.setTitre("Développement d'un système de catapulte pour humains");
 		st1.setDebut(new Date(new java.util.Date().getTime()));
-		st1.setDescription("Elon Musk en avait parlÃ© en soirÃ©e.");
+		st1.setDescription("Elon Musk en avait parlé en soirée.");
 		st1.setDuree(6);
 		st1.setLieu("Toulouse");
 		st1.setEntreprise(e1);
 		
 		Stage st2 = new Stage();
-		st2.setTitre("Pas Airbus - Nihil morati post haec militares avidi saepe turbarum adorti sunt Montium primum, qui divertebat in proximo");
+		st2.setTitre("Nihil morati post haec militares avidi saepe turbarum adorti sunt Montium primum, qui divertebat in proximo");
 		st2.setDebut(new Date(new java.util.Date().getTime()));
 		st2.setDescription("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
 		st2.setDuree(6);
@@ -37,7 +37,7 @@ public class CreateDB {
 		st2.setEntreprise(e1);
 		
 		Stage st3 = new Stage();
-		st3.setTitre("Thales -- Stage vraiment cool");
+		st3.setTitre("Stage vraiment cool");
 		st3.setDebut(new Date(new java.util.Date().getTime()));
 		st3.setDescription("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
 		st3.setDuree(6);

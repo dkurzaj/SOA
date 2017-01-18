@@ -23,7 +23,6 @@ import org.hibernate.Transaction;
 
 
 import fr.insa.modele.Etudiant;
-import fr.insa.modele.ObjectFactory;
 import fr.insa.modele.Stage;
 
 @WebServlet("/liste-stages")
