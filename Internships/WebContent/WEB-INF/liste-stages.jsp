@@ -10,12 +10,12 @@
 
 		<!-- Outils de recherche -->
 		<div class="well" id="search-tools">
-			<form class="form-horizontal">
+			<form class="form-horizontal" id="search-form" action="liste-stages" method="get">
 				<!-- Search bar -->
 				<div class="form-group">
 					<div class="col-xs-12">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Mots clés (optionnel)" name="q">
+							<input type="text" class="form-control" placeholder="Mots clés (optionnel)" name="motsclefs">
 							<div class="input-group-btn">
 								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 							</div>
@@ -45,7 +45,7 @@
 							</select>
 						</div>
 						<div class="col-sm-3">
-							<select class="form-control form-horizontal" id="search-city">
+							<select class="form-control form-horizontal" name="ville" id="search-city">
 								<option selected>Ville</option>
 								<option>Toulouse</option>
 								<option>Paris</option>
