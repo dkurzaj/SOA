@@ -28,22 +28,8 @@ public class Suivi_candidatures extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		entityManager = entityManagerFactory.createEntityManager();
-		entityManager.getTransaction().begin();
-        List<Postuler> liste = entityManager.createQuery( "from Postuler", Postuler.class ).getResultList();
-		// stage pris un peu random pour l'instant mais il faudra relier à la page précédente ou un truc du genre
-        Stage stage = entityManager.createQuery("from Stage", Stage.class).getResultList().get(0);
-        
-		entityManager.getTransaction().commit();
-        entityManager.close();
-        request.setAttribute("liste", liste);
-		request.setAttribute("stage", stage);
-		
-		
 		String action = request.getParameter("action");
 		long id;
 		//Postuler postulation;
@@ -67,6 +53,23 @@ public class Suivi_candidatures extends HttpServlet{
 		        em.close();
 			}
 		}
+		
+		
+		
+		
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+		entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+        List<Postuler> liste = entityManager.createQuery( "from Postuler where status='ENVOYEE'", Postuler.class ).getResultList();
+		// stage pris un peu random pour l'instant mais il faudra relier à la page précédente ou un truc du genre
+        Stage stage = entityManager.createQuery("from Stage", Stage.class).getResultList().get(0);
+        
+		entityManager.getTransaction().commit();
+        entityManager.close();
+        request.setAttribute("liste", liste);
+		request.setAttribute("stage", stage);
+		
 
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}
