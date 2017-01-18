@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.insa.modele.Postuler;
 import fr.insa.modele.Stage;
+import fr.insa.modele.Status;
 
 @WebServlet("/suivi_candidatures")
 public class Suivi_candidatures extends HttpServlet{
@@ -30,7 +31,8 @@ public class Suivi_candidatures extends HttpServlet{
 		entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
         List<Postuler> liste = entityManager.createQuery( "from Postuler", Postuler.class ).getResultList();
-		Stage stage = entityManager.createQuery("from Stage", Stage.class).getResultList().get(0);
+		// stage pris un peu random pour l'instant mais il faudra relier à la page précédente ou un truc du genre
+        Stage stage = entityManager.createQuery("from Stage", Stage.class).getResultList().get(0);
         
 		entityManager.getTransaction().commit();
         entityManager.close();
@@ -39,12 +41,24 @@ public class Suivi_candidatures extends HttpServlet{
 		
 		
 		String action = request.getParameter("action");
+		int id;
+		//Postuler postulation;
 		if (action!=null){
 			if (action.equals("accepter")){
-				//faire le accepter
+				id=Integer.parseInt(request.getParameter("idpost"));
+//				postulation=liste.get(id-1);
+//				postulation.etapeSuivanteValidation();
+				EntityManager em = entityManagerFactory.createEntityManager();
+				Postuler post=em.find(Postuler.class, id);
+				em.getTransaction().begin();
+				post.setStatus(Status.ACCEPTEE_ENT);
+				em.getTransaction().commit();
+		        em.close();
 			}
 			else if (action.equals("refuser")){
-				//faire le refus
+				id=Integer.parseInt(request.getParameter("idpost"));
+//				postulation=liste.get(id-1);
+//				postulation.refuserCandidature();
 			}
 		}
 
