@@ -7,6 +7,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Root;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,13 +28,40 @@ public class Suivi_candidatures extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
+
+		String action = request.getParameter("action");
+		long id;
+		//Postuler postulation;
+		if (action!=null){
+			if (action.equals("accepter")){
+				id=Long.parseLong(request.getParameter("idpost"));
+				EntityManager em = entityManagerFactory.createEntityManager();
+				Postuler post=em.find(Postuler.class, id);
+				em.getTransaction().begin();						
+				post.setStatus(Status.ACCEPTEE_ENT);
+				em.getTransaction().commit();
+		        em.close();
+			}
+			else if (action.equals("refuser")){
+				id=Long.parseLong(request.getParameter("idpost"));
+				EntityManager em = entityManagerFactory.createEntityManager();
+				Postuler post=em.find(Postuler.class, id);
+				em.getTransaction().begin();						
+				post.setStatus(Status.REFUSEE_ENT);
+				em.getTransaction().commit();
+		        em.close();
+			}
+		}
+		
+		
+		
+		
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
-        List<Postuler> liste = entityManager.createQuery( "from Postuler", Postuler.class ).getResultList();
+        List<Postuler> liste = entityManager.createQuery( "from Postuler where status='ENVOYEE'", Postuler.class ).getResultList();
 		// stage pris un peu random pour l'instant mais il faudra relier à la page précédente ou un truc du genre
         Stage stage = entityManager.createQuery("from Stage", Stage.class).getResultList().get(0);
         
@@ -39,28 +70,6 @@ public class Suivi_candidatures extends HttpServlet{
         request.setAttribute("liste", liste);
 		request.setAttribute("stage", stage);
 		
-		
-		String action = request.getParameter("action");
-		int id;
-		//Postuler postulation;
-		if (action!=null){
-			if (action.equals("accepter")){
-				id=Integer.parseInt(request.getParameter("idpost"));
-//				postulation=liste.get(id-1);
-//				postulation.etapeSuivanteValidation();
-				EntityManager em = entityManagerFactory.createEntityManager();
-				Postuler post=em.find(Postuler.class, id);
-				em.getTransaction().begin();
-				post.setStatus(Status.ACCEPTEE_ENT);
-				em.getTransaction().commit();
-		        em.close();
-			}
-			else if (action.equals("refuser")){
-				id=Integer.parseInt(request.getParameter("idpost"));
-//				postulation=liste.get(id-1);
-//				postulation.refuserCandidature();
-			}
-		}
 
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}

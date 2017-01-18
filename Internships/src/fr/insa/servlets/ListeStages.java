@@ -11,11 +11,13 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -29,7 +31,14 @@ import fr.insa.modele.Stage;
 public class ListeStages extends HttpServlet {
 	public static final String VUE = "/WEB-INF/liste-stages.jsp";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("sessionNomUtilisateur") == null) {
+			//Si on n'est pas connecté
+			response.sendRedirect(request.getContextPath() + "/connexion");
+		} else {
+			
+		}
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "Internships" );
 		EntityManager entityManager = entityManagerFactory.createEntityManager();

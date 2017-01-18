@@ -25,8 +25,8 @@
 		        			<form method="get" action="aa">
 								<button type="submit" class="btn btn-primary">CV</button>
 								<button type="submit" class="btn btn-primary">Lettre</button>
-								<a href="#?action=accepter&idpost=${postuler.getIdPostuler()}" class="btn btn-success">Accepter la demande</a>
-								<a href="#?action=refuser&idpost=${postuler.getIdPostuler()}"type="button" class="btn btn-success">Refuser la demande</button>										
+								<a href="?action=accepter&idpost=${postuler.getIdPostuler()}" class="btn btn-success">Accepter la demande</a>
+								<a href="?action=refuser&idpost=${postuler.getIdPostuler()}"type="button" class="btn btn-success">Refuser la demande</button>										
 							</form>
 						</td>
 		        	</tr>
