@@ -1,1 +1,149 @@
 2017-01-23 20:33:41,703 - [1;37mINFO[0m - 3686:MainThread - zato.common.repo:41 - Location [/home/nperez/Desktop/SOA/Python-WebServices/Zato/web-admin/config/repo] is not a Bazaar branch. Will turn it into one.
+2017-01-23 21:08:07,916 - [1;31mERROR[0m - 3686:MainThread - zato.admin.web.views:470 - Could not ping the connection, e:[Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/web/views/__init__.py", line 463, in id_only_service
+    result = req.zato.client.invoke(service, {'id': id})
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/middleware.py", line 72, in invoke
+    raise Exception('CID: {}\nDetails: {}'.format(zato_env.get('cid'), zato_env.get('details')))
+Exception: CID: K05HRJF085YSH64ARGGWGB92CK0X
+Details: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 198, in dispatch
+    payload, worker_store, self.simple_io_config, post_data)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 350, in handle
+    params_priority=channel_item.params_pri)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 388, in handle
+    self.response.payload.info = config_dict.get(item.name).ping(self.cid)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 106, in ping
+    {'zato_pre_request':zato_pre_request_hook})
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 83, in invoke_http
+    cert=cert, verify=verify, timeout=self.config['timeout'], *args, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 576, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+
+
+]
+2017-01-23 21:08:36,266 - [1;31mERROR[0m - 3686:MainThread - zato.admin.web.views.http_soap:197 - Could not create the object, e:[Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/web/views/http_soap.py", line 189, in create
+    response = req.zato.client.invoke('zato.http-soap.create', _get_edit_create_message(req.POST))
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/middleware.py", line 72, in invoke
+    raise Exception('CID: {}\nDetails: {}'.format(zato_env.get('cid'), zato_env.get('details')))
+Exception: CID: K05AG64A5ZHRF0GN90V5FCQ7RJRZ
+Details: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 198, in dispatch
+    payload, worker_store, self.simple_io_config, post_data)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 350, in handle
+    params_priority=channel_item.params_pri)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 140, in handle
+    raise Exception('An object of that name [{0}] already exists on this cluster'.format(input.name))
+Exception: An object of that name [http-SOAP-service_getOffer] already exists on this cluster
+
+
+]
+2017-01-24 02:45:14,126 - [1;31mERROR[0m - 2527:MainThread - zato.admin.web.views.http_soap:197 - Could not create the object, e:[Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/web/views/http_soap.py", line 189, in create
+    response = req.zato.client.invoke('zato.http-soap.create', _get_edit_create_message(req.POST))
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/middleware.py", line 72, in invoke
+    raise Exception('CID: {}\nDetails: {}'.format(zato_env.get('cid'), zato_env.get('details')))
+Exception: CID: K0426DNAKSVG4P68T06PWNJBQX1D
+Details: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 198, in dispatch
+    payload, worker_store, self.simple_io_config, post_data)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 350, in handle
+    params_priority=channel_item.params_pri)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 150, in handle
+    raise Exception(msg)
+Exception: Service [getStages.getAllStages] does not exist on this cluster
+
+
+]
+2017-01-24 02:51:37,950 - [1;31mERROR[0m - 2527:MainThread - zato.admin.web.views.http_soap:197 - Could not create the object, e:[Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/web/views/http_soap.py", line 189, in create
+    response = req.zato.client.invoke('zato.http-soap.create', _get_edit_create_message(req.POST))
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/middleware.py", line 72, in invoke
+    raise Exception('CID: {}\nDetails: {}'.format(zato_env.get('cid'), zato_env.get('details')))
+Exception: CID: K067AS2FZBFA4YPBWGNRGKD0CGN4
+Details: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 198, in dispatch
+    payload, worker_store, self.simple_io_config, post_data)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 350, in handle
+    params_priority=channel_item.params_pri)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 150, in handle
+    raise Exception(msg)
+Exception: Service [getStages] does not exist on this cluster
+
+
+]
+2017-01-24 02:54:05,342 - [1;37mINFO[0m - 2527:MainThread - zato.admin.web.views:308 - can_invoke_admin_service returned False, not invoking an admin service:[zato.service.get-list]
+2017-01-24 04:03:31,127 - [1;37mINFO[0m - 2527:MainThread - zato.admin.web.views:308 - can_invoke_admin_service returned False, not invoking an admin service:[zato.service.get-list]

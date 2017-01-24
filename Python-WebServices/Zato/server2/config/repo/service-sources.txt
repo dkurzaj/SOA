@@ -11,3 +11,6 @@
 ./work/hot-deploy/current
 
 # Visit https://zato.io/docs for more information.
+
+../../zservices/
+../../zservices/getStages.py

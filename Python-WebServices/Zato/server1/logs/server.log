@@ -15,3 +15,335 @@
 2017-01-24 02:34:13,447 - [1;37mINFO[0m - 3678:Dummy-8 - zato.helpers.input-logger:800 - {u'impl_name': u'zato.server.service.internal.helpers.InputLogger', u'name': u'zato.helpers.input-logger', u'cid': u'K07BMD5X0HY17NBBT9RVEPRKGQM7', u'invocation_time': datetime.datetime(2017, 1, 24, 1, 34, 13, 445331), u'job_type': None, u'data_format': None, u'slow_threshold': 99999, u'request.payload': u'Sample payload for a startup service (first worker)', u'wsgi_environ': {u'zato.request_ctx.async_msg': Bunch(action=u'101802', channel=u'startup-service', cid=u'K07BMD5X0HY17NBBT9RVEPRKGQM7', msg_type=u'0001', payload=u'Sample payload for a startup service (first worker)', service=u'zato.helpers.input-logger'), u'zato.request_ctx.fanout_cid': None, u'zato.request_ctx.in_reply_to': None, u'zato.request_ctx.parallel_exec_cid': None}, u'environ': {}, u'usage': 1, u'channel': u'startup-service'}
 2017-01-24 02:34:16,748 - [1;37mINFO[0m - 3678:Dummy-11 - zato.helpers.input-logger:800 - {u'impl_name': u'zato.server.service.internal.helpers.InputLogger', u'name': u'zato.helpers.input-logger', u'cid': u'K06HM44Q1S1YGQQY6AXGFZX2Y0JE', u'invocation_time': datetime.datetime(2017, 1, 24, 1, 34, 16, 747918), u'job_type': None, u'data_format': None, u'slow_threshold': 99999, u'request.payload': u'Sample payload for a startup service (first worker)', u'wsgi_environ': {u'zato.request_ctx.async_msg': Bunch(action=u'101802', channel=u'startup-service', cid=u'K06HM44Q1S1YGQQY6AXGFZX2Y0JE', msg_type=u'0001', payload=u'Sample payload for a startup service (first worker)', service=u'zato.helpers.input-logger'), u'zato.request_ctx.fanout_cid': None, u'zato.request_ctx.in_reply_to': None, u'zato.request_ctx.parallel_exec_cid': None}, u'environ': {}, u'usage': 2, u'channel': u'startup-service'}
 2017-01-24 02:34:29,102 - [1;37mINFO[0m - 3677:Dummy-2 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K067QRMMBYT078JY61HEF564DRDY], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any']]
+2017-01-24 03:08:07,907 - [1;33mWARNING[0m - 3678:Dummy-338 - zato.server.service:22 - Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 388, in handle
+    self.response.payload.info = config_dict.get(item.name).ping(self.cid)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 106, in ping
+    {'zato_pre_request':zato_pre_request_hook})
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 83, in invoke_http
+    cert=cert, verify=verify, timeout=self.config['timeout'], *args, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 576, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+
+2017-01-24 03:08:07,908 - [1;33mWARNING[0m - 3678:Dummy-338 - zato.server.service:22 - Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 414, in update_handle
+    response = set_response_func(service, data_format=data_format, transport=transport, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 308, in set_response_data
+    response = response.getvalue(serialize=kwargs['serialize'])
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/reqresp/__init__.py", line 343, in getvalue
+    elem_value = self._getvalue(name, item, is_sa_namedtuple, is_required, leave_as_is)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/reqresp/__init__.py", line 289, in _getvalue
+    raise ZatoException(self.zato_cid, msg)
+ZatoException: Expected elem:[info] not found in item:[{u'info': u''}]
+
+2017-01-24 03:08:07,909 - [1;33mWARNING[0m - 3678:Dummy-338 - zato.server.service:22 - Could not invoke `zato.http-soap.ping`, e:`Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 388, in handle
+    self.response.payload.info = config_dict.get(item.name).ping(self.cid)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 106, in ping
+    {'zato_pre_request':zato_pre_request_hook})
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 83, in invoke_http
+    cert=cert, verify=verify, timeout=self.config['timeout'], *args, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 576, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+
+`
+2017-01-24 03:08:07,909 - [1;33mWARNING[0m - 3678:Dummy-338 - zato.server.service:22 - Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 388, in handle
+    self.response.payload.info = config_dict.get(item.name).ping(self.cid)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 106, in ping
+    {'zato_pre_request':zato_pre_request_hook})
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 83, in invoke_http
+    cert=cert, verify=verify, timeout=self.config['timeout'], *args, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 576, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+
+
+2017-01-24 03:08:07,910 - [1;31mERROR[0m - 3678:Dummy-338 - zato.server.connection.http_soap.channel:22 - Caught an exception, cid:`K05HRJF085YSH64ARGGWGB92CK0X`, status_code:`500`, _format_exc:`Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 198, in dispatch
+    payload, worker_store, self.simple_io_config, post_data)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 350, in handle
+    params_priority=channel_item.params_pri)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 388, in handle
+    self.response.payload.info = config_dict.get(item.name).ping(self.cid)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 106, in ping
+    {'zato_pre_request':zato_pre_request_hook})
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/outgoing.py", line 83, in invoke_http
+    cert=cert, verify=verify, timeout=self.config['timeout'], *args, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 465, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/sessions.py", line 576, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/zato/2.0.7/eggs/requests-2.7.0-py2.7.egg/requests/adapters.py", line 415, in send
+    raise ConnectionError(err, request=request)
+ConnectionError: ('Connection aborted.', error(111, 'Connection refused'))
+
+`
+2017-01-24 08:10:42,416 - [1;37mINFO[0m - 2656:Dummy-1 - gunicorn.main:22 - Starting gunicorn 18.0
+2017-01-24 08:10:42,421 - [1;37mINFO[0m - 2656:Dummy-1 - gunicorn.main:22 - Listening at: http://127.0.0.1:17010 (2656)
+2017-01-24 08:10:42,421 - [1;37mINFO[0m - 2656:Dummy-1 - gunicorn.main:22 - Using worker: gevent
+2017-01-24 08:10:42,425 - [1;37mINFO[0m - 2668:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 2668
+2017-01-24 08:10:42,474 - [1;37mINFO[0m - 2669:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 2669
+2017-01-24 08:11:10,504 - [1;37mINFO[0m - 2668:Dummy-1 - zato.server.odb:22 - last_keep_alive:[2017-01-24 06:57:42.648134], grace_time:[90], max_allowed:[2017-01-24 06:59:12.648134], now:[2017-01-24 07:11:10.504733]
+2017-01-24 08:11:10,537 - [1;37mINFO[0m - 2668:Dummy-1 - zato.server.odb:22 - Server id:[1], name:[server1] is now a connector server for cluster id:[1], name:[quickstart-346960]
+2017-01-24 08:11:10,543 - [1;37mINFO[0m - 2668:Dummy-1 - zato.server.base.parallel:22 - Initializing connectors
+2017-01-24 08:11:10,561 - [1;37mINFO[0m - 2668:Dummy-1 - zato.server.base.parallel:22 - No AMQP channels to start
+2017-01-24 08:11:10,572 - [1;37mINFO[0m - 2668:Dummy-1 - zato.server.base.parallel:22 - No AMQP outgoing connections to start
+2017-01-24 08:11:10,588 - [1;37mINFO[0m - 2668:Dummy-1 - zato.server.base.parallel:22 - No JMS WebSphere MQ channels to start
+2017-01-24 08:11:10,606 - [1;37mINFO[0m - 2668:Dummy-1 - zato.server.base.parallel:22 - No JMS WebSphere MQ outgoing connections to start
+2017-01-24 08:11:10,616 - [1;37mINFO[0m - 2668:Dummy-1 - zato.server.base.parallel:22 - No Zero MQ channels to start
+2017-01-24 08:11:10,779 - [1;37mINFO[0m - 2668:Dummy-3 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K06JTTR3WYTJ36N6W7R943F4MSXB], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any', '/zato/to-singleton']]
+2017-01-24 08:11:13,357 - [1;37mINFO[0m - 2668:Dummy-8 - zato.helpers.input-logger:800 - {u'impl_name': u'zato.server.service.internal.helpers.InputLogger', u'name': u'zato.helpers.input-logger', u'cid': u'K05GRZJ40BD8YX9SZNNHG7H7ZNMH', u'invocation_time': datetime.datetime(2017, 1, 24, 7, 11, 13, 356267), u'job_type': None, u'data_format': None, u'slow_threshold': 99999, u'request.payload': u'Sample payload for a startup service (first worker)', u'wsgi_environ': {u'zato.request_ctx.async_msg': Bunch(action=u'101802', channel=u'startup-service', cid=u'K05GRZJ40BD8YX9SZNNHG7H7ZNMH', msg_type=u'0001', payload=u'Sample payload for a startup service (first worker)', service=u'zato.helpers.input-logger'), u'zato.request_ctx.fanout_cid': None, u'zato.request_ctx.in_reply_to': None, u'zato.request_ctx.parallel_exec_cid': None}, u'environ': {}, u'usage': 3, u'channel': u'startup-service'}
+2017-01-24 08:11:26,421 - [1;37mINFO[0m - 2669:Dummy-2 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K05FNH6X184MNEGABBB0FHXN46DA], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any']]
+2017-01-24 08:17:35,109 - [1;37mINFO[0m - 2656:Dummy-1 - gunicorn.main:22 - Handling signal: term
+2017-01-24 08:17:36,007 - [1;37mINFO[0m - 2668:Dummy-1 - gunicorn.main:22 - Worker exiting (pid: 2668)
+2017-01-24 08:17:36,021 - [1;37mINFO[0m - 2669:Dummy-1 - gunicorn.main:22 - Worker exiting (pid: 2669)
+2017-01-24 08:17:36,047 - [1;31mERROR[0m - 2668:Dummy-62 - springpython.context.ApplicationContext:22 - Could not destroy object 'parallel_server', exception 'Traceback (most recent call last):
+  File "/opt/zato/2.0.7/eggs/springpython-1.3.0rc1-py2.7.egg/springpython/context/__init__.py", line 106, in shutdown_hook
+    destroy_method()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/base/parallel.py", line 889, in destroy
+    self.broker_client.publish(msg, msg_type=msg_type)
+  File "/opt/zato/2.0.7/zato-broker/src/zato/broker/client.py", line 146, in publish
+    self.pub_client.publish(topic, dumps(msg))
+  File "/opt/zato/2.0.7/zato-broker/src/zato/broker/client.py", line 91, in publish
+    return self.client.publish(topic, msg)
+  File "/opt/zato/2.0.7/zato-common/src/zato/common/kvdb.py", line 161, in publish
+    return self.conn.publish(*args, **kwargs)
+  File "/opt/zato/2.0.7/eggs/redis-2.9.1-py2.7.egg/redis/client.py", line 1603, in publish
+    return self.execute_command('PUBLISH', channel, message)
+  File "/opt/zato/2.0.7/eggs/redis-2.9.1-py2.7.egg/redis/client.py", line 464, in execute_command
+    connection.send_command(*args)
+  File "/opt/zato/2.0.7/eggs/redis-2.9.1-py2.7.egg/redis/connection.py", line 338, in send_command
+    self.send_packed_command(self.pack_command(*args))
+  File "/opt/zato/2.0.7/eggs/redis-2.9.1-py2.7.egg/redis/connection.py", line 319, in send_packed_command
+    self.connect()
+  File "/opt/zato/2.0.7/eggs/redis-2.9.1-py2.7.egg/redis/connection.py", line 256, in connect
+    raise ConnectionError(self._error_message(e))
+ConnectionError: Error 111 connecting localhost:6379. Connection refused.
+'
+2017-01-24 08:17:36,247 - [1;37mINFO[0m - 2656:Dummy-1 - gunicorn.main:22 - Shutting down: Master
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 2017-01-24 08:23:51,302 - [1;37mINFO[0m - 2368:Dummy-1 - gunicorn.main:22 - Starting gunicorn 18.0
+2017-01-24 08:23:51,311 - [1;37mINFO[0m - 2368:Dummy-1 - gunicorn.main:22 - Listening at: http://127.0.0.1:17010 (2368)
+2017-01-24 08:23:51,311 - [1;37mINFO[0m - 2368:Dummy-1 - gunicorn.main:22 - Using worker: gevent
+2017-01-24 08:23:51,325 - [1;37mINFO[0m - 2392:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 2392
+2017-01-24 08:23:51,353 - [1;37mINFO[0m - 2393:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 2393
+2017-01-24 08:24:41,877 - [1;37mINFO[0m - 2392:Dummy-1 - zato.server.odb:22 - last_keep_alive:[2017-01-24 07:19:22.518946], grace_time:[90], max_allowed:[2017-01-24 07:20:52.518946], now:[2017-01-24 07:24:41.876924]
+2017-01-24 08:24:41,904 - [1;37mINFO[0m - 2392:Dummy-1 - zato.server.odb:22 - Server id:[1], name:[server1] is now a connector server for cluster id:[1], name:[quickstart-346960]
+2017-01-24 08:24:41,907 - [1;37mINFO[0m - 2392:Dummy-1 - zato.server.base.parallel:22 - Initializing connectors
+2017-01-24 08:24:42,010 - [1;37mINFO[0m - 2392:Dummy-1 - zato.server.base.parallel:22 - No AMQP channels to start
+2017-01-24 08:24:42,020 - [1;37mINFO[0m - 2392:Dummy-1 - zato.server.base.parallel:22 - No AMQP outgoing connections to start
+2017-01-24 08:24:42,026 - [1;37mINFO[0m - 2392:Dummy-1 - zato.server.base.parallel:22 - No JMS WebSphere MQ channels to start
+2017-01-24 08:24:42,045 - [1;37mINFO[0m - 2392:Dummy-1 - zato.server.base.parallel:22 - No JMS WebSphere MQ outgoing connections to start
+2017-01-24 08:24:42,055 - [1;37mINFO[0m - 2392:Dummy-1 - zato.server.base.parallel:22 - No Zero MQ channels to start
+2017-01-24 08:24:42,214 - [1;37mINFO[0m - 2392:Dummy-3 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K07RR49EBED09V5VNGWQKGV1J41B], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any', '/zato/to-singleton']]
+2017-01-24 08:24:44,850 - [1;37mINFO[0m - 2392:Dummy-8 - zato.helpers.input-logger:800 - {u'impl_name': u'zato.server.service.internal.helpers.InputLogger', u'name': u'zato.helpers.input-logger', u'cid': u'K047ZB1QEGMECG7WTBZX51DFNTSZ', u'invocation_time': datetime.datetime(2017, 1, 24, 7, 24, 44, 849062), u'job_type': None, u'data_format': None, u'slow_threshold': 99999, u'request.payload': u'Sample payload for a startup service (first worker)', u'wsgi_environ': {u'zato.request_ctx.async_msg': Bunch(action=u'101802', channel=u'startup-service', cid=u'K047ZB1QEGMECG7WTBZX51DFNTSZ', msg_type=u'0001', payload=u'Sample payload for a startup service (first worker)', service=u'zato.helpers.input-logger'), u'zato.request_ctx.fanout_cid': None, u'zato.request_ctx.in_reply_to': None, u'zato.request_ctx.parallel_exec_cid': None}, u'environ': {}, u'usage': 4, u'channel': u'startup-service'}
+                                                                                                                                                                                                                                                    2017-01-24 08:27:29,321 - [1;37mINFO[0m - 2501:Dummy-1 - gunicorn.main:22 - Starting gunicorn 18.0
+2017-01-24 08:27:29,334 - [1;37mINFO[0m - 2501:Dummy-1 - gunicorn.main:22 - Listening at: http://127.0.0.1:17010 (2501)
+2017-01-24 08:27:29,334 - [1;37mINFO[0m - 2501:Dummy-1 - gunicorn.main:22 - Using worker: gevent
+2017-01-24 08:27:29,344 - [1;37mINFO[0m - 2525:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 2525
+2017-01-24 08:27:29,371 - [1;37mINFO[0m - 2526:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 2526
+2017-01-24 08:28:23,255 - [1;37mINFO[0m - 2526:Dummy-1 - zato.server.odb:22 - last_keep_alive:[2017-01-24 07:25:12.946581], grace_time:[90], max_allowed:[2017-01-24 07:26:42.946581], now:[2017-01-24 07:28:23.255145]
+2017-01-24 08:28:23,279 - [1;37mINFO[0m - 2526:Dummy-1 - zato.server.odb:22 - Server id:[1], name:[server1] is now a connector server for cluster id:[1], name:[quickstart-346960]
+2017-01-24 08:28:23,291 - [1;37mINFO[0m - 2526:Dummy-1 - zato.server.base.parallel:22 - Initializing connectors
+2017-01-24 08:28:23,309 - [1;37mINFO[0m - 2526:Dummy-1 - zato.server.base.parallel:22 - No AMQP channels to start
+2017-01-24 08:28:23,329 - [1;37mINFO[0m - 2526:Dummy-1 - zato.server.base.parallel:22 - No AMQP outgoing connections to start
+2017-01-24 08:28:23,348 - [1;37mINFO[0m - 2526:Dummy-1 - zato.server.base.parallel:22 - No JMS WebSphere MQ channels to start
+2017-01-24 08:28:23,366 - [1;37mINFO[0m - 2526:Dummy-1 - zato.server.base.parallel:22 - No JMS WebSphere MQ outgoing connections to start
+2017-01-24 08:28:23,381 - [1;37mINFO[0m - 2526:Dummy-1 - zato.server.base.parallel:22 - No Zero MQ channels to start
+2017-01-24 08:28:23,523 - [1;37mINFO[0m - 2526:Dummy-3 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K04AV6VJNKJP0JGDSDJTJF9ASSYW], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any', '/zato/to-singleton']]
+2017-01-24 08:28:26,197 - [1;37mINFO[0m - 2526:Dummy-8 - zato.helpers.input-logger:800 - {u'impl_name': u'zato.server.service.internal.helpers.InputLogger', u'name': u'zato.helpers.input-logger', u'cid': u'K070PRVVQMQV3FG3ZY20JQCYR5KH', u'invocation_time': datetime.datetime(2017, 1, 24, 7, 28, 26, 196568), u'job_type': None, u'data_format': None, u'slow_threshold': 99999, u'request.payload': u'Sample payload for a startup service (first worker)', u'wsgi_environ': {u'zato.request_ctx.async_msg': Bunch(action=u'101802', channel=u'startup-service', cid=u'K070PRVVQMQV3FG3ZY20JQCYR5KH', msg_type=u'0001', payload=u'Sample payload for a startup service (first worker)', service=u'zato.helpers.input-logger'), u'zato.request_ctx.fanout_cid': None, u'zato.request_ctx.in_reply_to': None, u'zato.request_ctx.parallel_exec_cid': None}, u'environ': {}, u'usage': 4, u'channel': u'startup-service'}
+2017-01-24 08:28:28,772 - [1;37mINFO[0m - 2526:Dummy-11 - zato.helpers.input-logger:800 - {u'impl_name': u'zato.server.service.internal.helpers.InputLogger', u'name': u'zato.helpers.input-logger', u'cid': u'K07RDNCJVAR5CX9TPCH414483ZTB', u'invocation_time': datetime.datetime(2017, 1, 24, 7, 28, 28, 772046), u'job_type': None, u'data_format': None, u'slow_threshold': 99999, u'request.payload': u'Sample payload for a startup service (first worker)', u'wsgi_environ': {u'zato.request_ctx.async_msg': Bunch(action=u'101802', channel=u'startup-service', cid=u'K07RDNCJVAR5CX9TPCH414483ZTB', msg_type=u'0001', payload=u'Sample payload for a startup service (first worker)', service=u'zato.helpers.input-logger'), u'zato.request_ctx.fanout_cid': None, u'zato.request_ctx.in_reply_to': None, u'zato.request_ctx.parallel_exec_cid': None}, u'environ': {}, u'usage': 5, u'channel': u'startup-service'}
+2017-01-24 08:28:47,838 - [1;37mINFO[0m - 2525:Dummy-2 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K07EBCPMKMNCWZE053EW1YTC0N7F], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any']]
+2017-01-24 08:42:53,043 - [1;37mINFO[0m - 2525:Dummy-63 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 08:42:53,044 - [1;37mINFO[0m - 2525:Dummy-63 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 08:42:53,106 - [1;37mINFO[0m - 2525:Dummy-63 - zato.hot-deploy.create:22 - Uploaded package id:[1], payload_name:[getStages.py]
+2017-01-24 08:42:54,175 - [1;37mINFO[0m - 2526:Dummy-139 - zato.hot-deploy.create:22 - Uploaded package id:[1], payload_name:[getStages.py]
+2017-01-24 08:45:14,118 - [1;31mERROR[0m - 2525:Dummy-76 - zato.http-soap.create:22 - Service [getStages.getAllStages] does not exist on this cluster
+2017-01-24 08:45:14,121 - [1;33mWARNING[0m - 2525:Dummy-76 - zato.server.service:22 - Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 150, in handle
+    raise Exception(msg)
+Exception: Service [getStages.getAllStages] does not exist on this cluster
+
+2017-01-24 08:45:14,122 - [1;33mWARNING[0m - 2525:Dummy-76 - zato.server.service:22 - Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 414, in update_handle
+    response = set_response_func(service, data_format=data_format, transport=transport, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 308, in set_response_data
+    response = response.getvalue(serialize=kwargs['serialize'])
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/reqresp/__init__.py", line 343, in getvalue
+    elem_value = self._getvalue(name, item, is_sa_namedtuple, is_required, leave_as_is)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/reqresp/__init__.py", line 289, in _getvalue
+    raise ZatoException(self.zato_cid, msg)
+ZatoException: Expected elem:[id] not found in item:[{u'id': u'', u'name': u''}]
+
+2017-01-24 08:45:14,123 - [1;33mWARNING[0m - 2525:Dummy-76 - zato.server.service:22 - Could not invoke `zato.http-soap.create`, e:`Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 150, in handle
+    raise Exception(msg)
+Exception: Service [getStages.getAllStages] does not exist on this cluster
+
+`
+2017-01-24 08:45:14,123 - [1;33mWARNING[0m - 2525:Dummy-76 - zato.server.service:22 - Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 150, in handle
+    raise Exception(msg)
+Exception: Service [getStages.getAllStages] does not exist on this cluster
+
+
+2017-01-24 08:45:14,124 - [1;31mERROR[0m - 2525:Dummy-76 - zato.server.connection.http_soap.channel:22 - Caught an exception, cid:`K0426DNAKSVG4P68T06PWNJBQX1D`, status_code:`500`, _format_exc:`Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 198, in dispatch
+    payload, worker_store, self.simple_io_config, post_data)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 350, in handle
+    params_priority=channel_item.params_pri)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 428, in update_handle
+    raise Exception(exc_formatted)
+Exception: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/http_soap.py", line 150, in handle
+    raise Exception(msg)
+Exception: Service [getStages.getAllStages] does not exist on this cluster
+
+`
+2017-01-24 08:48:53,405 - [1;37mINFO[0m - 2526:Dummy-196 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 08:48:53,408 - [1;37mINFO[0m - 2526:Dummy-196 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 08:48:53,491 - [1;37mINFO[0m - 2526:Dummy-196 - zato.hot-deploy.create:22 - Uploaded package id:[2], payload_name:[getStages.py]
+2017-01-24 08:48:54,498 - [1;37mINFO[0m - 2525:Dummy-91 - zato.hot-deploy.create:22 - Uploaded package id:[2], payload_name:[getStages.py]
+2017-01-24 08:53:48,795 - [1;37mINFO[0m - 2525:Dummy-112 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 08:53:48,813 - [1;37mINFO[0m - 2525:Dummy-112 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 08:53:48,978 - [1;37mINFO[0m - 2525:Dummy-112 - zato.hot-deploy.create:22 - Uploaded package id:[3], payload_name:[getStages.py]
+2017-01-24 08:53:49,953 - [1;37mINFO[0m - 2526:Dummy-241 - zato.hot-deploy.create:22 - Uploaded package id:[3], payload_name:[getStages.py]
+2017-01-24 08:57:55,026 - [1;37mINFO[0m - 2525:Dummy-127 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 08:57:55,040 - [1;37mINFO[0m - 2525:Dummy-127 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 08:57:55,232 - [1;37mINFO[0m - 2525:Dummy-127 - zato.hot-deploy.create:22 - Uploaded package id:[4], payload_name:[getStages.py]
+2017-01-24 08:57:56,132 - [1;37mINFO[0m - 2526:Dummy-291 - zato.hot-deploy.create:22 - Uploaded package id:[4], payload_name:[getStages.py]
+2017-01-24 10:02:29,006 - [1;37mINFO[0m - 2526:Dummy-888 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 10:02:29,015 - [1;37mINFO[0m - 2526:Dummy-888 - zato.hot-deploy.create:22 - Creating tar archive
+2017-01-24 10:02:29,186 - [1;37mINFO[0m - 2526:Dummy-888 - zato.hot-deploy.create:22 - Uploaded package id:[5], payload_name:[getStages.py]
+2017-01-24 10:02:30,194 - [1;37mINFO[0m - 2525:Dummy-426 - zato.hot-deploy.create:22 - Uploaded package id:[5], payload_name:[getStages.py]
+2017-01-24 10:06:15,191 - [1;33mWARNING[0m - 2525:Dummy-466 - zato.server.service:22 - Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/home/nperez/Desktop/SOA/Python-WebServices/Zato/server1/work/hot-deploy/current/getStages.py", line 18, in handle
+    response = available_offerids_svc.send()
+  File "/opt/zato/2.0.7/eggs/bunch-1.0.1-py2.7.egg/bunch/__init__.py", line 121, in __getattr__
+    raise AttributeError(k)
+AttributeError: send
+
+2017-01-24 10:06:15,192 - [1;31mERROR[0m - 2525:Dummy-466 - zato.server.connection.http_soap.channel:22 - Caught an exception, cid:`K04G28NT3M1JA2CPNE4F136G8A2W`, status_code:`500`, _format_exc:`Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 198, in dispatch
+    payload, worker_store, self.simple_io_config, post_data)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 350, in handle
+    params_priority=channel_item.params_pri)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/home/nperez/Desktop/SOA/Python-WebServices/Zato/server1/work/hot-deploy/current/getStages.py", line 18, in handle
+    response = available_offerids_svc.send()
+  File "/opt/zato/2.0.7/eggs/bunch-1.0.1-py2.7.egg/bunch/__init__.py", line 121, in __getattr__
+    raise AttributeError(k)
+AttributeError: send
+`

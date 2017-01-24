@@ -1,0 +1,8 @@
+from zato.server.service import Service
+
+class GetAllStages(Service):
+    def handle(self):
+        self.log_input()
+
+
+
