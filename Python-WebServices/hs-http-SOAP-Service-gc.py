@@ -27,7 +27,7 @@ class HelloWorldService(ServiceBase):
             offres_stage = get_offres_stage_from_json()
             for offre in offres_stage:
                 if offre['id'] == id:
-                    for k, v in offres_stage[id].items():
+                    for k, v in offre.items():
                         yield v
         except:
             pass
