@@ -1,0 +1,30 @@
+2017-01-24 02:33:37,777 - [1;37mINFO[0m - 3665:MainThread - zato.common.repo:22 - Location [/home/nperez/Desktop/SOA/Python-WebServices/Zato/server2/config/repo] is not a Bazaar branch. Will turn it into one.
+2017-01-24 02:33:38,576 - [1;37mINFO[0m - 3665:Dummy-1 - gunicorn.main:22 - Starting gunicorn 18.0
+2017-01-24 02:33:38,584 - [1;37mINFO[0m - 3665:Dummy-1 - gunicorn.main:22 - Listening at: http://127.0.0.1:17011 (3665)
+2017-01-24 02:33:38,584 - [1;37mINFO[0m - 3665:Dummy-1 - gunicorn.main:22 - Using worker: gevent
+2017-01-24 02:33:38,591 - [1;37mINFO[0m - 3691:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 3691
+2017-01-24 02:33:38,691 - [1;37mINFO[0m - 3692:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 3692
+2017-01-24 02:34:14,122 - [1;37mINFO[0m - 3691:Dummy-1 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:34:10.683214], grace_time:[90], max_allowed:[2017-01-24 01:35:40.683214], now:[2017-01-24 01:34:14.122307]
+2017-01-24 02:34:14,207 - [1;37mINFO[0m - 3691:Dummy-3 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K04VFHKE6FMRQGXZE3DX1VGJRRN9], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any', '/zato/to-singleton']]
+2017-01-24 02:34:24,741 - [1;37mINFO[0m - 3691:Dummy-5 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:34:10.683214], grace_time:[90], max_allowed:[2017-01-24 01:35:40.683214], now:[2017-01-24 01:34:24.741744]
+2017-01-24 02:34:30,431 - [1;37mINFO[0m - 3692:Dummy-2 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K062ET1CA6S13QBKDY6DRWZ9HF1V], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any']]
+2017-01-24 02:34:54,747 - [1;37mINFO[0m - 3691:Dummy-8 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:34:41.463356], grace_time:[90], max_allowed:[2017-01-24 01:36:11.463356], now:[2017-01-24 01:34:54.747601]
+2017-01-24 02:35:24,744 - [1;37mINFO[0m - 3691:Dummy-11 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:35:11.465688], grace_time:[90], max_allowed:[2017-01-24 01:36:41.465688], now:[2017-01-24 01:35:24.744456]
+2017-01-24 02:35:54,740 - [1;37mINFO[0m - 3691:Dummy-14 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:35:41.475668], grace_time:[90], max_allowed:[2017-01-24 01:37:11.475668], now:[2017-01-24 01:35:54.740766]
+2017-01-24 02:36:24,742 - [1;37mINFO[0m - 3691:Dummy-17 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:36:11.465619], grace_time:[90], max_allowed:[2017-01-24 01:37:41.465619], now:[2017-01-24 01:36:24.742577]
+2017-01-24 02:36:54,746 - [1;37mINFO[0m - 3691:Dummy-20 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:36:41.481271], grace_time:[90], max_allowed:[2017-01-24 01:38:11.481271], now:[2017-01-24 01:36:54.746181]
+2017-01-24 02:37:24,761 - [1;37mINFO[0m - 3691:Dummy-22 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:37:11.471780], grace_time:[90], max_allowed:[2017-01-24 01:38:41.471780], now:[2017-01-24 01:37:24.761348]
+2017-01-24 02:37:54,752 - [1;37mINFO[0m - 3691:Dummy-25 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:37:41.472646], grace_time:[90], max_allowed:[2017-01-24 01:39:11.472646], now:[2017-01-24 01:37:54.752126]
+2017-01-24 02:38:24,750 - [1;37mINFO[0m - 3691:Dummy-29 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:38:11.476501], grace_time:[90], max_allowed:[2017-01-24 01:39:41.476501], now:[2017-01-24 01:38:24.750731]
+2017-01-24 02:38:54,757 - [1;37mINFO[0m - 3691:Dummy-32 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:38:41.477789], grace_time:[90], max_allowed:[2017-01-24 01:40:11.477789], now:[2017-01-24 01:38:54.757563]
+2017-01-24 02:39:24,770 - [1;37mINFO[0m - 3691:Dummy-35 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:39:11.486075], grace_time:[90], max_allowed:[2017-01-24 01:40:41.486075], now:[2017-01-24 01:39:24.770176]
+2017-01-24 02:39:54,757 - [1;37mINFO[0m - 3691:Dummy-37 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:39:41.486059], grace_time:[90], max_allowed:[2017-01-24 01:41:11.486059], now:[2017-01-24 01:39:54.757136]
+2017-01-24 02:40:24,760 - [1;37mINFO[0m - 3691:Dummy-40 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:40:11.486553], grace_time:[90], max_allowed:[2017-01-24 01:41:41.486553], now:[2017-01-24 01:40:24.760232]
+2017-01-24 02:40:54,761 - [1;37mINFO[0m - 3691:Dummy-42 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:40:41.488471], grace_time:[90], max_allowed:[2017-01-24 01:42:11.488471], now:[2017-01-24 01:40:54.761557]
+2017-01-24 02:41:24,797 - [1;37mINFO[0m - 3691:Dummy-45 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:41:11.491572], grace_time:[90], max_allowed:[2017-01-24 01:42:41.491572], now:[2017-01-24 01:41:24.797181]
+2017-01-24 02:41:54,764 - [1;37mINFO[0m - 3691:Dummy-48 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:41:41.492729], grace_time:[90], max_allowed:[2017-01-24 01:43:11.492729], now:[2017-01-24 01:41:54.764622]
+2017-01-24 02:42:24,765 - [1;37mINFO[0m - 3691:Dummy-50 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:42:11.498900], grace_time:[90], max_allowed:[2017-01-24 01:43:41.498900], now:[2017-01-24 01:42:24.765093]
+2017-01-24 02:42:54,765 - [1;37mINFO[0m - 3691:Dummy-53 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:42:41.523606], grace_time:[90], max_allowed:[2017-01-24 01:44:11.523606], now:[2017-01-24 01:42:54.765380]
+2017-01-24 02:43:24,770 - [1;37mINFO[0m - 3691:Dummy-55 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:43:11.494369], grace_time:[90], max_allowed:[2017-01-24 01:44:41.494369], now:[2017-01-24 01:43:24.770884]
+2017-01-24 02:43:54,770 - [1;37mINFO[0m - 3691:Dummy-59 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:43:41.497735], grace_time:[90], max_allowed:[2017-01-24 01:45:11.497735], now:[2017-01-24 01:43:54.770738]
+2017-01-24 02:44:24,769 - [1;37mINFO[0m - 3691:Dummy-62 - zato.server.odb:22 - last_keep_alive:[2017-01-24 01:44:11.498467], grace_time:[90], max_allowed:[2017-01-24 01:45:41.498467], now:[2017-01-24 01:44:24.769354]

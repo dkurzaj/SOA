@@ -1,0 +1,1 @@
+2017-01-23 20:33:41,703 - [1;37mINFO[0m - 3686:MainThread - zato.common.repo:41 - Location [/home/nperez/Desktop/SOA/Python-WebServices/Zato/web-admin/config/repo] is not a Bazaar branch. Will turn it into one.
