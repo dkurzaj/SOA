@@ -1,0 +1,19 @@
+Créer une VM VirtualBox sous Ubuntu
+Dans cette VM:
+
+sudo apt-get install redis-server
+Installer Zato : https://zato.io/docs/admin/guide/install/ubuntu.html
+
+Ajouter la ligne suivante au .bashrc:
+alias zato='/opt/zato/2.0.7/bin/zato'
+
+Faire tourner redis-server dans un autre terminal (je ne sais pas si c'est nécessarire ou pas)
+nperez@nperez-VirtualBox:~/Desktop/SOA/Python-WebServices$ zato quickstart create ./Zato sqlite localhost 6379 --kvdb_password '' --verbose
+
+	
+	Web admin user:[admin], password:[koku-rujo-sisc-ohes]
+
+Dans les scripts .sh (zato-qs-start.sh, etc), remplacer la ligne :
+EXPORT ZATO_BIN=zato
+par EXPORT ZATO_BIN='/opt/zato/2.0.7/bin/zato'
+
