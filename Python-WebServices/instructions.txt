@@ -10,10 +10,20 @@ alias zato='/opt/zato/2.0.7/bin/zato'
 Faire tourner redis-server dans un autre terminal (je ne sais pas si c'est nécessarire ou pas)
 nperez@nperez-VirtualBox:~/Desktop/SOA/Python-WebServices$ zato quickstart create ./Zato sqlite localhost 6379 --kvdb_password '' --verbose
 
-	
-	Web admin user:[admin], password:[koku-rujo-sisc-ohes]
+Identifiants pour le web dashboard de zato :
+http://localhost:8183/
+Web admin user:[admin], password:[koku-rujo-sisc-ohes]
 
 Dans les scripts .sh (zato-qs-start.sh, etc), remplacer la ligne :
 EXPORT ZATO_BIN=zato
 par EXPORT ZATO_BIN='/opt/zato/2.0.7/bin/zato'
+
+HOT-DEPLOYER UN SERVICE :
+Uploader le .py dans la section services. Mettre * dans le moteur de recherche et voir s'il est apparu. 
+Mettre getStages.py dans /opt/zato/2.0.7/zato_extra_paths
+Aller dans server*/config/repo/service-sources.txt, rajouter:
+../../zservices/
+../../zservices/getStages.py
+
+sudo pip install werkzeug
 
