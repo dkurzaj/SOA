@@ -1,10 +1,15 @@
-# Zato
+# -*- coding: utf-8 -*-
+
+import sys, os, re, json
+sys.path.append("/opt/zato/2.0.7/zato-server/src")
+from pprint import pprint
 from zato.server.service import Service
+from lxml.etree import Element, fromstring, QName, SubElement, tostring
 
 class GetAllStages(Service):
     def handle(self):
 
-        # Fetch connection to CRM
+        # Fetch connection to Web Services
         ir_availableofferids = self.outgoing.plain_http.get('http-REST-service_getAvailableOffersIDs')
         gc_availableofferids = self.outgoing.plain_http.get('http-SOAP-service_getAvailableOffersIDs')
         ir_getoffer = self.outgoing.plain_http.get('http-REST-service_getOffer')
@@ -13,30 +18,32 @@ class GetAllStages(Service):
         available_offerids_svcs = [ir_availableofferids, gc_availableofferids]
         get_offer_svcs = [ir_getoffer, gc_getoffer]
 
-        all_available_offerids = []
-        for available_offerids_svc in available_offerids_svcs:
-            response = available_offerids_svc.send()
-            all_available_offerids.append(response.data)
+        self.response.payload = {}
+        list_offers = []
 
-        self.logger.info('All available_offerids: {}'.format(all_available_offerids))
+        #Traitement du service SOAP
+        response = gc_availableofferids.conn.get(self.cid, {})
+        print(response.text)
+        #Il faudrait utiliser XPath pour que ce soit propre mais j'ai la flemme
+        all_gc_ids = [int(s) for s in re.findall(">([0-9]+)<", response.text)]
+        for gc_id in all_gc_ids:
+            response = gc_getoffer.conn.get(self.cid, {'id': gc_id})
+            list_offers.append({
+                "id": int(re.findall("<tns:id>(.*)</tns:id>", response.text)[0]),
+                "stage_date": re.findall("<tns:stage_date>(.*)</tns:stage_date>", response.text)[0],
+                "description": re.findall("<tns:description>(.*)</tns:description>", response.text)[0],
+                "duree": int(re.findall("<tns:duree>(.*)</tns:duree>", response.text)[0]),
+                "lieu": re.findall("<tns:lieu>(.*)</tns:lieu>", response.text)[0],
+                "titre": re.findall("<tns:titre>(.*)</tns:titre>", response.text)[0],
+                "entreprise": int(re.findall("<tns:entreprise>(.*)</tns:entreprise>", response.text)[0])
+                })
 
-        all_offers = []
-        for get_offer_svc, available_offerids in zip(get_offer_svcs, all_available_offerids):
-            offers = []
-            for available_offerid in available_offerids:
-                offer = get_offer_svc.send(available_offerid)
-                offers.append(offer.data)
-            all_offers.append(offers)
+        #Traitement du service REST
+        response = ir_availableofferids.conn.get(self.cid, {})
+        all_ir_ids = json.loads(response.text)
+        for ir_id in all_ir_ids:
+            response = ir_getoffer.conn.get(self.cid, {"id": ir_id})
+            list_offers.append(json.loads(response.text)[0])
 
-        self.logger.info('All offers: {}'.format(all_offers))
-
-        response = {}
-        response['first_name'] = cust['firstName']
-        response['last_name'] = cust['lastName']
-        response['last_payment_date'] = last_payment['DATE']
-        response['last_payment_amount'] = last_payment['AMOUNT']
-
-        self.logger.info('Response: {}'.format(response))
-
-        # And return response to the caller
-        self.response.payload = response
+        self.response.payload = {"AllAvailableOffers": list_offers}
+        return 

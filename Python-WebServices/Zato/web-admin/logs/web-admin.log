@@ -147,3 +147,47 @@ Exception: Service [getStages] does not exist on this cluster
 ]
 2017-01-24 02:54:05,342 - [1;37mINFO[0m - 2527:MainThread - zato.admin.web.views:308 - can_invoke_admin_service returned False, not invoking an admin service:[zato.service.get-list]
 2017-01-24 04:03:31,127 - [1;37mINFO[0m - 2527:MainThread - zato.admin.web.views:308 - can_invoke_admin_service returned False, not invoking an admin service:[zato.service.get-list]
+2017-01-24 23:14:57,269 - [1;31mERROR[0m - 2629:MainThread - zato.admin.web.views.service:551 - Could not invoke the service. name:[get-stages.get-all-stages], cluster_id:[1], e:[Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/web/views/service.py", line 546, in invoke
+    response = req.zato.client.invoke(name, **input_dict)
+  File "/opt/zato/2.0.7/zato-web-admin/src/zato/admin/middleware.py", line 72, in invoke
+    raise Exception('CID: {}\nDetails: {}'.format(zato_env.get('cid'), zato_env.get('details')))
+Exception: CID: K057YGDVVC2PVKR4RS37ZBPNB7MG
+Details: Traceback (most recent call last):
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 198, in dispatch
+    payload, worker_store, self.simple_io_config, post_data)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/connection/http_soap/channel.py", line 350, in handle
+    params_priority=channel_item.params_pri)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/internal/service.py", line 271, in handle
+    response = func(id_, payload, channel, data_format, transport, serialize=True)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 499, in invoke
+    return self.invoke_by_impl_name(self.server.service_store.name_to_impl_name[name], *args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 483, in invoke_by_impl_name
+    return self.update_handle(*invoke_args, **kwargs)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 401, in update_handle
+    self._invoke(service, channel)
+  File "/opt/zato/2.0.7/zato-server/src/zato/server/service/__init__.py", line 344, in _invoke
+    service.handle()
+  File "/home/nperez/Desktop/SOA/Python-WebServices/Zato/server2/work/hot-deploy/current/getStages.py", line 23, in handle
+    all_available_offerids.append(response.data)
+AttributeError: 'Response' object has no attribute 'data'
+
+]
+2017-01-25 13:49:48,952 - [1;31mERROR[0m - 2674:MainThread - zato.client:180 - inner.status_code `504`, JSON parsing error `<html><body><h1>504 Gateway Time-out</h1>
+The server didn't respond in time.
+</body></html>
+`
+2017-01-25 13:49:59,577 - [1;37mINFO[0m - 2674:MainThread - zato.admin.web.views:308 - can_invoke_admin_service returned False, not invoking an admin service:[zato.service.get-list]
+2017-01-25 16:04:41,788 - [1;31mERROR[0m - 2530:MainThread - zato.client:180 - inner.status_code `504`, JSON parsing error `<html><body><h1>504 Gateway Time-out</h1>
+The server didn't respond in time.
+</body></html>
+`
+2017-01-25 16:04:57,107 - [1;37mINFO[0m - 2530:MainThread - zato.admin.web.views:308 - can_invoke_admin_service returned False, not invoking an admin service:[zato.service.get-list]
+2017-01-25 16:05:16,646 - [1;31mERROR[0m - 2530:MainThread - zato.client:180 - inner.status_code `504`, JSON parsing error `<html><body><h1>504 Gateway Time-out</h1>
+The server didn't respond in time.
+</body></html>
+`
