@@ -3365,3 +3365,12 @@ NameError: global name 'json' is not defined
 2017-01-26 07:07:09,853 - [1;37mINFO[0m - 2615:Dummy-82 - zato.server.connection.http_soap.outgoing:22 - CID:`K066862KVKWGQW8XYGEP7S11PDV9`, address:`http://localhost:8001/getOffer`, qs:`{'id': 1}`, auth:`None`, kwargs:`{}`
 2017-01-26 07:07:09,862 - [1;37mINFO[0m - 2615:Dummy-82 - zato.server.connection.http_soap.outgoing:22 - CID:`K066862KVKWGQW8XYGEP7S11PDV9`, address:`http://localhost:8001/getOffer`, qs:`{'id': 2}`, auth:`None`, kwargs:`{}`
 2017-01-26 07:07:09,875 - [1;37mINFO[0m - 2615:Dummy-82 - zato.server.connection.http_soap.outgoing:22 - CID:`K066862KVKWGQW8XYGEP7S11PDV9`, address:`http://localhost:8001/getOffer`, qs:`{'id': 3}`, auth:`None`, kwargs:`{}`
+2017-01-29 20:45:24,262 - [1;33mCRITICAL[0m - 2590:Dummy-1 - gunicorn.main:204 - WORKER TIMEOUT (pid:2616)
+2017-01-29 20:45:24,262 - [1;33mCRITICAL[0m - 2590:Dummy-1 - gunicorn.main:204 - WORKER TIMEOUT (pid:2615)
+2017-01-29 20:45:24,280 - [1;33mCRITICAL[0m - 2590:Dummy-1 - gunicorn.main:204 - WORKER TIMEOUT (pid:2616)
+2017-01-29 20:45:24,281 - [1;33mCRITICAL[0m - 2590:Dummy-1 - gunicorn.main:204 - WORKER TIMEOUT (pid:2615)
+2017-01-29 20:45:24,283 - [1;33mCRITICAL[0m - 2590:Dummy-1 - gunicorn.main:204 - WORKER TIMEOUT (pid:2615)
+2017-01-29 20:45:24,288 - [1;37mINFO[0m - 3261:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 3261
+2017-01-29 20:45:25,351 - [1;37mINFO[0m - 3269:Dummy-1 - gunicorn.main:22 - Booting worker with pid: 3269
+2017-01-29 20:46:06,806 - [1;37mINFO[0m - 3261:Dummy-2 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K05D32TADJ4763Y1M3PG0S09VR5V], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any']]
+2017-01-29 20:46:21,340 - [1;37mINFO[0m - 3269:Dummy-2 - zato.broker.client:22 - Starting broker client, host:[localhost], port:[6379], name:[parallel-K057MMDH7CQNKS55MCB99Q48EC7W], topics:[['/zato/to-parallel/all', '/zato/to-parallel/any']]
